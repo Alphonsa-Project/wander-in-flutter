@@ -6,8 +6,7 @@ import 'package:wander_in/account1.dart';
 import 'package:wander_in/blogs.dart';
 
 import 'package:wander_in/firebase_options.dart';
-
-
+import 'package:wander_in/placedetails.dart';
 
 import 'package:wander_in/review.dart';
 import 'package:wander_in/search.dart';
