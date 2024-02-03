@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wander_in/account1.dart';
 import 'package:wander_in/home1.dart';
+import 'package:wander_in/map.dart';
+import 'package:wander_in/notification.dart';
+import 'package:wander_in/plans.dart';
 
 class ParentPage extends StatefulWidget {
   const ParentPage({
@@ -32,7 +36,13 @@ class _ParentPageState extends State<ParentPage> {
             selectedIndex = newIndex;
           });
         },
-        children: const [home1(), home1(), home1()],
+        children: const [
+          home1(),
+          MapPage(),
+          Planspage(),
+          notification(),
+          account1()
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
@@ -54,13 +64,21 @@ class _ParentPageState extends State<ParentPage> {
               activeIcon: Icon(Icons.home_filled),
               label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded),
-              activeIcon: Icon(Icons.home_filled),
-              label: "Home"),
+              icon: Icon(Icons.map_outlined),
+              activeIcon: Icon(Icons.map_rounded),
+              label: "Map"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded),
-              activeIcon: Icon(Icons.home_filled),
-              label: "Home"),
+              icon: Icon(Icons.add_circle_outline),
+              activeIcon: Icon(Icons.add_circle_outlined),
+              label: "plan"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.access_alarm),
+              activeIcon: Icon(Icons.access_alarm),
+              label: "Noti"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.people),
+              activeIcon: Icon(Icons.people),
+              label: "Account"),
         ],
         selectedLabelStyle: const TextStyle(fontSize: 15, height: .9),
         unselectedLabelStyle: const TextStyle(fontSize: 10, height: .8),
