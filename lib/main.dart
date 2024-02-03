@@ -1,15 +1,20 @@
 import 'dart:math';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:wander_in/account1.dart';
 import 'package:wander_in/blogs.dart';
-import 'package:wander_in/home1.dart';
-import 'package:wander_in/login1.dart';
-import 'package:wander_in/notification.dart';
-import 'package:wander_in/posts.dart';
+import 'package:wander_in/firebase_options.dart';
+
+
 import 'package:wander_in/review.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
