@@ -1,12 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:wander_in/account.dart';
 import 'package:wander_in/account1.dart';
 import 'package:wander_in/blogs.dart';
-import 'package:wander_in/home.dart';
 import 'package:wander_in/home1.dart';
-import 'package:wander_in/login.dart';
 import 'package:wander_in/login1.dart';
 import 'package:wander_in/notification.dart';
 import 'package:wander_in/posts.dart';
@@ -29,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: review(),
+      home: blogs(),
     );
   }
 }

@@ -11,7 +11,7 @@ class _postsState extends State<posts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 172, 172),
+      backgroundColor: Color.fromARGB(255, 170, 71, 71),
       body: SafeArea(
           child: Container(
         height: MediaQuery.of(context).size.height,
