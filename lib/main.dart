@@ -6,6 +6,7 @@ import 'package:wander_in/account1.dart';
 import 'package:wander_in/blogs.dart';
 
 import 'package:wander_in/firebase_options.dart';
+import 'package:wander_in/parent_pages/parent_page.dart';
 import 'package:wander_in/placedetails.dart';
 
 import 'package:wander_in/review.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: placedetailState(),
+      home: ParentPage(),
     );
   }
 }
