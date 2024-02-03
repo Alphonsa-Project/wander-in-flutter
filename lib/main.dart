@@ -2,10 +2,10 @@ import 'dart:math';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:wander_in/account.dart';
 import 'package:wander_in/account1.dart';
 import 'package:wander_in/blogs.dart';
 import 'package:wander_in/firebase_options.dart';
+
 
 import 'package:wander_in/review.dart';
 
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: review(),
+      home: blogs(),
     );
   }
 }
