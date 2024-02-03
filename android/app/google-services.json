@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "287580435637",
+    "project_id": "wanderin-bd650",
+    "storage_bucket": "wanderin-bd650.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287580435637:android:ef4e082bb3dc62ce91fafc",
+        "android_client_info": {
+          "package_name": "com.example.wander_in"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmAb5kt-VGlqr0yDnrnalpEuo5sjfBMoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
