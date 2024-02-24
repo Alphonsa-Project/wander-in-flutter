@@ -42,7 +42,10 @@ class _MapPageState extends State<MapPage> {
                                         .04,
                                     width:
                                         MediaQuery.of(context).size.width * .07,
-                                    color: Colors.red,
+                                    decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                   ),
                                   SizedBox(
                                     width: 20,
@@ -51,8 +54,11 @@ class _MapPageState extends State<MapPage> {
                                     height: MediaQuery.of(context).size.height *
                                         .04,
                                     width:
-                                        MediaQuery.of(context).size.width * .80,
-                                    color: Colors.red,
+                                        MediaQuery.of(context).size.width * .85,
+                                    decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                   ),
                                 ],
                               ),
