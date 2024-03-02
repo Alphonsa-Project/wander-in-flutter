@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wander_in/Blurrypage.dart';
 import 'package:wander_in/account1.dart';
@@ -30,6 +31,14 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await FirebaseAppCheck.instance.activate(
+      androidProvider: AndroidProvider.playIntegrity,
+      appleProvider: AppleProvider.appAttestWithDeviceCheckFallback);
+
+  FirebaseUIAuth.configureProviders([
+    PhoneAuthProvider(),
+  ]);
   runApp(const MyApp());
 }
 
