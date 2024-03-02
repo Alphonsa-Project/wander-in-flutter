@@ -5,28 +5,26 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wander_in/Blurrypage.dart';
-import 'package:wander_in/account1.dart';
+import 'package:wander_in/parent_pages/account1.dart';
 import 'package:wander_in/authentication/authstate.dart';
 import 'package:wander_in/blogs.dart';
 
 import 'package:wander_in/firebase_options.dart';
-import 'package:wander_in/notification.dart';
+import 'package:wander_in/parent_pages/notification.dart';
 import 'package:wander_in/parent_pages/parent_page.dart';
 import 'package:wander_in/placedetailonly.dart';
 
-import 'package:wander_in/places.dart';
 import 'package:wander_in/posts.dart';
 import 'package:wander_in/posts1.dart';
-import 'package:wander_in/resort12.dart';
 
 import 'package:wander_in/home1.dart';
 import 'package:wander_in/login1.dart';
-import 'package:wander_in/map.dart';
-import 'package:wander_in/notification.dart';
+import 'package:wander_in/parent_pages/map.dart';
+import 'package:wander_in/parent_pages/notification.dart';
 import 'package:wander_in/parent_pages/parent_page.dart';
 import 'package:wander_in/photos.dart';
 import 'package:wander_in/places2.dart';
-import 'package:wander_in/plans.dart';
+import 'package:wander_in/parent_pages/plans.dart';
 import 'package:wander_in/posts.dart';
 import 'package:wander_in/resort.dart';
 import 'package:wander_in/resort2.dart';
@@ -65,13 +63,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const ProjectAuthState());
+        home: ProjectAuthState());
   }
 }

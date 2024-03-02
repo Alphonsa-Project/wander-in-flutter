@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wander_in/authentication/authstate.dart';
 
 class account1 extends StatefulWidget {
   const account1({super.key});
@@ -361,7 +363,7 @@ class _account1State extends State<account1> {
                         ),
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.height * .1,
+                        height: MediaQuery.of(context).size.height * .12,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 255, 255, 255),
@@ -373,18 +375,32 @@ class _account1State extends State<account1> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    height: 20,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      color: Colors.red.shade700,
-                                      borderRadius: BorderRadius.circular(20),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      FirebaseAuth.instance.signOut();
+                                      setState(() {});
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const ProjectAuthState()));
+                                    },
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .04,
+                                      width: MediaQuery.of(context).size.width *
+                                          .25,
+                                      decoration: BoxDecoration(
+                                        color: Colors.red.shade700,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Center(
+                                          child: Text(
+                                        "logout",
+                                        style: TextStyle(color: Colors.white),
+                                      )),
                                     ),
-                                    child: Center(
-                                        child: Text(
-                                      "logout",
-                                      style: TextStyle(color: Colors.white),
-                                    )),
                                   ),
                                 )
                               ],

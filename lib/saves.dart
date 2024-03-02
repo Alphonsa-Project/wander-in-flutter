@@ -26,7 +26,7 @@ class _SavespageState extends State<Savespage> {
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Text(
-                      "Plan",
+                      "Saves",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
@@ -34,14 +34,68 @@ class _SavespageState extends State<Savespage> {
                     height: 20,
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
+                    padding: const EdgeInsets.only(
+                        left: 20.0, top: 20.0, right: 20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('Trips'),
-                        const Text('Saves'),
-                        const Text('Get a Ride'),
+                        //all..........................................................................
+                        Container(
+                          height: MediaQuery.of(context).size.height * .03,
+                          width: MediaQuery.of(context).size.width * .18,
+                          decoration: BoxDecoration(
+                              color: Color(0xffff0000),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              'All',
+                              style: TextStyle(
+                                color: Color(0xfff9f4f4),
+                              ),
+                            ),
+                          ),
+                        ),
+                        //resorts....................................................................
+                        Container(
+                          height: MediaQuery.of(context).size.height * .03,
+                          width: MediaQuery.of(context).size.width * .18,
+                          decoration: BoxDecoration(
+                              color: Color(0xffff0000),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              'Resorts',
+                              style: TextStyle(color: Color(0xfff9f4f4)),
+                            ),
+                          ),
+                        ),
+                        //places...................................................
+                        Container(
+                            height: MediaQuery.of(context).size.height * .03,
+                            width: MediaQuery.of(context).size.width * .18,
+                            decoration: BoxDecoration(
+                                color: Color(0xffff0000),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Center(
+                              child: Text(
+                                'Places',
+                                style: TextStyle(color: Color(0xfff9f4f4)),
+                              ),
+                            )),
+                        // trips.................................................
+                        Container(
+                          height: MediaQuery.of(context).size.height * .03,
+                          width: MediaQuery.of(context).size.width * .18,
+                          decoration: BoxDecoration(
+                              color: Color(0xffff0000),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              'Trips',
+                              style: TextStyle(color: Color(0xfff9f4f4)),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -71,7 +125,6 @@ class _SavespageState extends State<Savespage> {
                           child: Icon(Icons.delete_rounded)),
                     ],
                   )
-
                 ],
               ),
             ),

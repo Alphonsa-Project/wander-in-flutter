@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Searchpage extends StatefulWidget {
   const Searchpage({super.key});
 
@@ -135,44 +134,6 @@ class _SearchpageState extends State<Searchpage> {
                         )
                       ],
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, top: 25),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * .03,
-                          width: MediaQuery.of(context).size.width * .2,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.black,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 5,
-                                  offset: Offset(1, 2),
-                                ),
-                              ]),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, top: 25),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * .03,
-                          width: MediaQuery.of(context).size.width * .2,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.red,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 10,
-                                  offset: Offset(1, 2),
-                                ),
-                              ]),
-                        ),
-                      ),
-                    ], //photos........................................................................................
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
