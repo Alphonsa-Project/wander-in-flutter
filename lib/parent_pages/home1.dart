@@ -151,6 +151,7 @@ class _home1State extends State<home1> {
                   //     ),
                   //   ],
                   // ),
+
                   SizedBox(
                     height: 20,
                   ),
@@ -159,51 +160,84 @@ class _home1State extends State<home1> {
                     padding: const EdgeInsets.only(left: 8.0),
                     child: const Text('Places'),
                   ),
+
                   SizedBox(
-                    height: 10,
+                    height: 100,
+                    width: MediaQuery.of(context).size.width,
+                    child: FirestoreQueryBuilder<Map<String, dynamic>>(
+                      query: FirebaseFirestore.instance
+                          .collection('places')
+                          .where('region', isEqualTo: 'bathery'),
+                      builder: (context, snapshot, _) {
+                        return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: snapshot.docs.length,
+                          itemBuilder: (context, index) {
+                            if (snapshot.hasMore &&
+                                index + 1 == snapshot.docs.length) {
+                              snapshot.fetchMore();
+                            }
+
+                            final places = snapshot.docs[index].data();
+                            log(places.toString());
+
+                            return Padding(
+                              padding: EdgeInsets.only(left: 8.0),
+                              child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height * .18,
+                                width: MediaQuery.of(context).size.width * .6,
+                                child: Image.network(places['image_url']),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10),
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * .18,
-                            width: MediaQuery.of(context).size.width * .6,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                      color:
-                                          const Color.fromARGB(255, 94, 0, 0),
-                                      blurRadius: 5,
-                                      offset: Offset(1, 2))
-                                ],
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/r.png"),
-                                    fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * .18,
-                          width: MediaQuery.of(context).size.width * .6,
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    color: const Color.fromARGB(255, 94, 0, 0),
-                                    blurRadius: 5,
-                                    offset: Offset(1, 2))
-                              ],
-                              image: DecorationImage(
-                                  image: AssetImage("assets/images/r.png"),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(
+                        //       left: 10.0, top: 10, bottom: 10),
+                        //   child: Container(
+                        //     height: MediaQuery.of(context).size.height * .18,
+                        //     width: MediaQuery.of(context).size.width * .6,
+                        //     decoration: BoxDecoration(
+                        //         boxShadow: [
+                        //           BoxShadow(
+                        //               color:
+                        //                   const Color.fromARGB(255, 94, 0, 0),
+                        //               blurRadius: 5,
+                        //               offset: Offset(1, 2))
+                        //         ],
+                        //         image: DecorationImage(
+                        //             image: AssetImage("assets/images/r.png"),
+                        //             fit: BoxFit.cover),
+                        //         borderRadius: BorderRadius.circular(10)),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   width: 10,
+                        // ),
+                        // Container(
+                        //   height: MediaQuery.of(context).size.height * .18,
+                        //   width: MediaQuery.of(context).size.width * .6,
+                        //   decoration: BoxDecoration(
+                        //       boxShadow: [
+                        //         BoxShadow(
+                        //             color: const Color.fromARGB(255, 94, 0, 0),
+                        //             blurRadius: 5,
+                        //             offset: Offset(1, 2))
+                        //       ],
+                        //       image: DecorationImage(
+                        //           image: AssetImage("assets/images/r.png"),
+                        //           fit: BoxFit.cover),
+                        //       borderRadius: BorderRadius.circular(10)),
+                        // ),
                       ],
                     ),
                   ),
