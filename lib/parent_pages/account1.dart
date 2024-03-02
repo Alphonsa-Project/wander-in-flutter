@@ -164,7 +164,7 @@ class _account1State extends State<account1> {
               ],
             ),
             Positioned(
-              bottom: -200,
+              bottom: MediaQuery.of(context).size.height * -0.25,
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,

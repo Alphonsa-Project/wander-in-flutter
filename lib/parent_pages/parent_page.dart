@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wander_in/parent_pages/account1.dart';
-import 'package:wander_in/home1.dart';
+import 'package:wander_in/parent_pages/home1.dart';
 import 'package:wander_in/parent_pages/map.dart';
 import 'package:wander_in/parent_pages/notification.dart';
 import 'package:wander_in/parent_pages/plans.dart';

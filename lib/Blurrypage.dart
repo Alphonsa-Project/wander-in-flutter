@@ -13,7 +13,10 @@ class BlurryPage extends StatelessWidget {
           child: Container(
             width: 200,
             height: 200,
-            color: Colors.blue,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/r.png"), fit: BoxFit.cover),
+            ),
             child: Center(
               child: Text(
                 'Blurry Container',

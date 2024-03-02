@@ -378,17 +378,6 @@ class _SearchpageState extends State<Searchpage> {
                   SizedBox(
                     height: 30,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0, top: 25),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * .06,
-                      width: MediaQuery.of(context).size.width * .95,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.red,
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),

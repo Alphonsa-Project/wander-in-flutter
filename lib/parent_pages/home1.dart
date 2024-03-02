@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
 
 class home1 extends StatefulWidget {
@@ -57,60 +61,96 @@ class _home1State extends State<home1> {
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("assets/images/t1.png"))),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/images/t2.png"))),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("assets/images/t3.png"))),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("assets/images/t4.png"))),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("assets/images/t5.png"))),
-                        ),
-                      ),
-                    ],
+
+                  SizedBox(
+                    height: 70,
+                    width: MediaQuery.of(context).size.width,
+                    child: FirestoreQueryBuilder<Map<String, dynamic>>(
+                      query: FirebaseFirestore.instance
+                          .collection('users')
+                          .where('region', isEqualTo: 'bathery'),
+                      builder: (context, snapshot, _) {
+                        return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: snapshot.docs.length,
+                          itemBuilder: (context, index) {
+                            if (snapshot.hasMore &&
+                                index + 1 == snapshot.docs.length) {
+                              snapshot.fetchMore();
+                            }
+
+                            final users = snapshot.docs[index].data();
+                            log(users.toString());
+
+                            return Padding(
+                              padding: EdgeInsets.only(left: 8.0),
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                child: Image.network(users['image_url']),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
+
+                  // Row(
+                  //   children: [
+                  //     Padding(
+                  //       padding: const EdgeInsets.only(left: 8.0),
+                  //       child: Container(
+                  //         height: 50,
+                  //         width: 50,
+                  //         decoration: BoxDecoration(
+                  //             image: DecorationImage(
+                  //                 image: AssetImage("assets/images/t1.png"))),
+                  //       ),
+                  //     ),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //     Container(
+                  //       height: 50,
+                  //       width: 50,
+                  //       decoration: BoxDecoration(
+                  //           image: DecorationImage(
+                  //               image: AssetImage("assets/images/t2.png"))),
+                  //     ),
+                  //     Padding(
+                  //       padding: const EdgeInsets.only(left: 10.0),
+                  //       child: Container(
+                  //         height: 50,
+                  //         width: 50,
+                  //         decoration: BoxDecoration(
+                  //             image: DecorationImage(
+                  //                 image: AssetImage("assets/images/t3.png"))),
+                  //       ),
+                  //     ),
+                  //     Padding(
+                  //       padding: const EdgeInsets.only(left: 10.0),
+                  //       child: Container(
+                  //         height: 50,
+                  //         width: 50,
+                  //         decoration: BoxDecoration(
+                  //             image: DecorationImage(
+                  //                 image: AssetImage("assets/images/t4.png"))),
+                  //       ),
+                  //     ),
+                  //     Padding(
+                  //       padding: const EdgeInsets.only(left: 10.0),
+                  //       child: Container(
+                  //         height: 50,
+                  //         width: 50,
+                  //         decoration: BoxDecoration(
+                  //             image: DecorationImage(
+                  //                 image: AssetImage("assets/images/t5.png"))),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   SizedBox(
                     height: 20,
                   ),
