@@ -35,9 +35,9 @@ class _SavespageState extends State<Savespage> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 8.0, right: 8.0, top: 10),
+                        const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         const Text('Trips'),
                         const Text('Saves'),
@@ -46,28 +46,32 @@ class _SavespageState extends State<Savespage> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0, top: 20.0),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * .20,
-                      width: MediaQuery.of(context).size.width * .95,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 5,
-                                offset: Offset(1, 2))
-                          ],
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/r.png'),
-                              fit: BoxFit.cover),
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 320.0),
-                    child: const Text('remove'),
-                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15.0, top: 20.0),
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * .20,
+                          width: MediaQuery.of(context).size.width * .75,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey,
+                                    blurRadius: 5,
+                                    offset: Offset(1, 2))
+                              ],
+                              image: DecorationImage(
+                                  image: AssetImage('assets/images/r.png'),
+                                  fit: BoxFit.cover),
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Icon(Icons.delete_rounded)),
+                    ],
+                  )
+
                 ],
               ),
             ),

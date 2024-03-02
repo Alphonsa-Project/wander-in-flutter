@@ -11,7 +11,8 @@ class _reviewState extends State<review> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Color.fromARGB(255, 255, 0, 0),
+
       body: SafeArea(
           child: Container(
         height: MediaQuery.of(context).size.height,
