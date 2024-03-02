@@ -11,7 +11,7 @@ class _postsState extends State<posts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 170, 71, 71),
+      backgroundColor: Color.fromARGB(255, 255, 225, 225),
       body: SafeArea(
           child: Container(
         height: MediaQuery.of(context).size.height,
@@ -74,8 +74,7 @@ class _postsState extends State<posts> {
                   child: Text(
                     'posts',
                     style: TextStyle(
-                        fontSize: 18,
-                        color: Color.fromARGB(255, 255, 255, 255)),
+                        fontSize: 18, color: Color.fromARGB(162, 0, 0, 0)),
                   ),
                 ),
                 Center(
@@ -85,8 +84,7 @@ class _postsState extends State<posts> {
                     child: Text(
                       'sort',
                       style: TextStyle(
-                          fontSize: 18,
-                          color: Color.fromARGB(255, 255, 255, 255)),
+                          fontSize: 18, color: Color.fromARGB(162, 0, 0, 0)),
                     ),
                   ),
                 ),
