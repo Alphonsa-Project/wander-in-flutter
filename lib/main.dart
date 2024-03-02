@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:wander_in/Blurrypage.dart';
 import 'package:wander_in/account1.dart';
 import 'package:wander_in/blogs.dart';
 
@@ -11,14 +12,15 @@ import 'package:wander_in/login1.dart';
 import 'package:wander_in/map.dart';
 import 'package:wander_in/notification.dart';
 import 'package:wander_in/parent_pages/parent_page.dart';
+import 'package:wander_in/photos.dart';
+import 'package:wander_in/places2.dart';
 import 'package:wander_in/plans.dart';
 import 'package:wander_in/posts.dart';
 import 'package:wander_in/resort.dart';
+import 'package:wander_in/resort2.dart';
 import 'package:wander_in/resortview.dart';
 import 'package:wander_in/saves.dart';
 import 'package:wander_in/taxi.dart';
-import 'package:wander_in/places.dart';
-
 import 'package:wander_in/review.dart';
 import 'package:wander_in/search.dart';
 
@@ -44,6 +46,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: ResortView());
+        home: Photos());
   }
 }
