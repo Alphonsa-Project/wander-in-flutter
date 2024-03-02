@@ -269,6 +269,7 @@ class _taxiState extends State<taxi> {
               ),
             ),
           ],
+
         ),
       )),
     );
