@@ -1,8 +1,7 @@
-// import 'package:LifeLoot/authentication/login.dart';
-// import 'package:LifeLoot/parent_pages/parent_page.dart';
-// import 'package:LifeLoot/registration/registration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wander_in/authentication/login.dart';
+import 'package:wander_in/parent_pages/parent_page.dart';
 
 class ProjectAuthState extends StatelessWidget {
   const ProjectAuthState({
@@ -24,7 +23,7 @@ class ProjectAuthState extends StatelessWidget {
                         color: Color(0xff1254AA),
                       )));
             } else if (snapshot.hasData) {
-              return const Registration();
+              return const ParentPage();
             } else if (snapshot.hasError) {
               return const Center(child: Text('something went wrong..!'));
             } else {
