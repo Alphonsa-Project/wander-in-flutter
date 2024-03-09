@@ -38,7 +38,7 @@ class _taxiState extends State<taxi> {
                         ),
                       ),
                       Positioned(
-                        right: -100,
+                        right: MediaQuery.of(context).size.height * .75,
                         child: Container(
                           height: MediaQuery.of(context).size.height * .4,
                           width: MediaQuery.of(context).size.width,
