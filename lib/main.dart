@@ -6,6 +6,8 @@ import 'package:wander_in/account1.dart';
 import 'package:wander_in/blogs.dart';
 
 import 'package:wander_in/firebase_options.dart';
+import 'package:wander_in/home1.dart';
+import 'package:wander_in/login1.dart';
 import 'package:wander_in/notification.dart';
 import 'package:wander_in/parent_pages/parent_page.dart';
 import 'package:wander_in/placedetailonly.dart';
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: taxi(),
+      home: login1(),
     );
   }
 }

@@ -22,7 +22,7 @@ class _account1State extends State<account1> {
                 Container(
                   height: MediaQuery.of(context).size.height * .5,
                   width: MediaQuery.of(context).size.width,
-                  color: Color.fromARGB(255, 255, 0, 0),
+                  color: Color.fromARGB(255, 255, 255, 255),
                   child: Stack(
                     children: [
                       Positioned(
@@ -377,7 +377,7 @@ class _account1State extends State<account1> {
                                     height: 20,
                                     width: 100,
                                     decoration: BoxDecoration(
-                                      color: Colors.red.shade700,
+                                      color: const Color.fromARGB(255, 0, 0, 0),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Center(

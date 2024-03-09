@@ -11,7 +11,7 @@ class _home1State extends State<home1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 237, 237),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 16.0),
@@ -201,7 +201,7 @@ class _home1State extends State<home1> {
                           width: MediaQuery.of(context).size.width * .2,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Colors.red,
+                            color: Colors.black,
                           ),
                           child: Center(
                               child: Text(
