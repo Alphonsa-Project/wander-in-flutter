@@ -11,7 +11,7 @@ class _notificationState extends State<notification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(top: 16.0),
@@ -27,15 +27,17 @@ class _notificationState extends State<notification> {
                 //notific.................................................................................................................
 
                 Container(
-                  height: MediaQuery.of(context).size.height * .15,
+                  height: MediaQuery.of(context).size.height * .13,
                   width: MediaQuery.of(context).size.width,
-                  decoration:
-                      BoxDecoration(color: Color(0xfff9f4f4), boxShadow: [
-                    BoxShadow(
-                        color: Color.fromARGB(255, 121, 4, 4).withOpacity(0.5),
-                        blurRadius: 4,
-                        offset: Offset(0, 4))
-                  ]),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.shade900.withOpacity(0.5),
+                            blurRadius: 4,
+                            offset: Offset(1, 4))
+                      ]),
                   child: Column(
                     children: [
                       Row(
@@ -141,8 +143,13 @@ class _notificationState extends State<notification> {
                         height: MediaQuery.of(context).size.height * .07,
                         width: MediaQuery.of(context).size.width * .9,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(113, 255, 96, 96)
-                                .withOpacity(0.5),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade900.withOpacity(0.5),
+                                  blurRadius: 4,
+                                  offset: Offset(1, 4))
+                            ],
                             borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
@@ -152,8 +159,13 @@ class _notificationState extends State<notification> {
                         height: MediaQuery.of(context).size.height * .07,
                         width: MediaQuery.of(context).size.width * .9,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(113, 255, 96, 96)
-                                .withOpacity(0.5),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade900.withOpacity(0.5),
+                                  blurRadius: 4,
+                                  offset: Offset(1, 4))
+                            ],
                             borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
@@ -163,8 +175,13 @@ class _notificationState extends State<notification> {
                         height: MediaQuery.of(context).size.height * .07,
                         width: MediaQuery.of(context).size.width * .9,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(113, 255, 96, 96)
-                                .withOpacity(0.5),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade900.withOpacity(0.5),
+                                  blurRadius: 4,
+                                  offset: Offset(1, 4))
+                            ],
                             borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
@@ -190,8 +207,14 @@ class _notificationState extends State<notification> {
                           height: MediaQuery.of(context).size.height * .07,
                           width: MediaQuery.of(context).size.width * .9,
                           decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color:
+                                        Colors.grey.shade900.withOpacity(0.5),
+                                    blurRadius: 4,
+                                    offset: Offset(1, 4))
+                              ],
                               borderRadius: BorderRadius.circular(12)),
                         ),
                       ),
@@ -201,8 +224,14 @@ class _notificationState extends State<notification> {
                           height: MediaQuery.of(context).size.height * .07,
                           width: MediaQuery.of(context).size.width * .9,
                           decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color:
+                                        Colors.grey.shade900.withOpacity(0.5),
+                                    blurRadius: 4,
+                                    offset: Offset(1, 4))
+                              ],
                               borderRadius: BorderRadius.circular(12)),
                         ),
                       ),
@@ -212,9 +241,16 @@ class _notificationState extends State<notification> {
                           height: MediaQuery.of(context).size.height * .07,
                           width: MediaQuery.of(context).size.width * .9,
                           decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
+                              color: Colors.redAccent.shade100,
+                              boxShadow: [
+                                BoxShadow(
+                                    color:
+                                        Colors.grey.shade900.withOpacity(0.5),
+                                    blurRadius: 4,
+                                    offset: Offset(1, 4)),
+                              ],
                               borderRadius: BorderRadius.circular(12)),
+                          child: Center(child: Text("tatata")),
                         ),
                       ),
                       Padding(
@@ -223,8 +259,14 @@ class _notificationState extends State<notification> {
                           height: MediaQuery.of(context).size.height * .07,
                           width: MediaQuery.of(context).size.width * .9,
                           decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color:
+                                        Colors.grey.shade900.withOpacity(0.5),
+                                    blurRadius: 4,
+                                    offset: Offset(1, 4))
+                              ],
                               borderRadius: BorderRadius.circular(12)),
                         ),
                       ),

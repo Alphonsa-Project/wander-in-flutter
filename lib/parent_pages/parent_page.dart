@@ -54,7 +54,7 @@ class _ParentPageState extends State<ParentPage> {
         elevation: 0,
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        selectedItemColor: const Color(0xff0054B3),
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.black26,
         //type: BottomNavigationBarType.fixed,
         items: const [
@@ -64,17 +64,17 @@ class _ParentPageState extends State<ParentPage> {
               activeIcon: Icon(Icons.home_filled),
               label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.map_outlined),
-              activeIcon: Icon(Icons.map_rounded),
+              icon: Icon(Icons.location_pin),
+              activeIcon: Icon(Icons.location_on),
               label: "Map"),
           BottomNavigationBarItem(
               icon: Icon(Icons.add_circle_outline),
               activeIcon: Icon(Icons.add_circle_outlined),
               label: "plan"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.access_alarm),
-              activeIcon: Icon(Icons.access_alarm),
-              label: "Noti"),
+              icon: Icon(Icons.notifications),
+              activeIcon: Icon(Icons.notifications),
+              label: "Notification"),
           BottomNavigationBarItem(
               icon: Icon(Icons.people),
               activeIcon: Icon(Icons.people),

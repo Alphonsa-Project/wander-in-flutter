@@ -15,7 +15,7 @@ class _home1State extends State<home1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 237, 237),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 16.0),
@@ -157,7 +157,7 @@ class _home1State extends State<home1> {
                   ),
                   //places..........................................................................
                   Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.only(left: 8.0, bottom: 15),
                     child: const Text('Places'),
                   ),
 
@@ -183,12 +183,17 @@ class _home1State extends State<home1> {
                             log(places.toString());
 
                             return Padding(
-                              padding: EdgeInsets.only(left: 8.0),
+                              padding: EdgeInsets.only(left: 8.0, top: 9.0),
                               child: Container(
                                 height:
-                                    MediaQuery.of(context).size.height * .18,
-                                width: MediaQuery.of(context).size.width * .6,
-                                child: Image.network(places['image_url']),
+                                    MediaQuery.of(context).size.height * .20,
+                                width: MediaQuery.of(context).size.width * .5,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    image: DecorationImage(
+                                        image:
+                                            NetworkImage(places['image_url']),
+                                        fit: BoxFit.cover)),
                               ),
                             );
                           },
@@ -244,6 +249,7 @@ class _home1State extends State<home1> {
                   SizedBox(
                     height: 10,
                   ),
+
                   //people.................................................................................
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 13.0),
@@ -259,6 +265,7 @@ class _home1State extends State<home1> {
                                   image: DecorationImage(
                                 image: AssetImage("assets/images/t5.png"),
                               )),
+                              child: Stack(),
                             ),
                             SizedBox(
                               width: 10,
@@ -304,10 +311,9 @@ class _home1State extends State<home1> {
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
-                                      color:
-                                          const Color.fromARGB(255, 94, 0, 0),
+                                      color: Colors.black,
                                       blurRadius: 5,
-                                      offset: Offset(0, 2))
+                                      offset: Offset(1, 2))
                                 ],
                                 image: DecorationImage(
                                     image: AssetImage("assets/images/r.png"),
