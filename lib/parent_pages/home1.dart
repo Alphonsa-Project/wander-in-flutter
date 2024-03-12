@@ -15,7 +15,7 @@ class _home1State extends State<home1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 237, 237),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 16.0),
@@ -47,12 +47,17 @@ class _home1State extends State<home1> {
                       )
                     ],
                   ),
-                  //Trav section ...............................................................
-                  SizedBox(
-                    height: 20,
-                  ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "WANDER.IN",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                  //Trav section ...............................................................
+
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, top: 10),
                     child: const Text(
                       'Travelers',
                       style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
@@ -157,12 +162,12 @@ class _home1State extends State<home1> {
                   ),
                   //places..........................................................................
                   Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.only(left: 8.0, bottom: 15),
                     child: const Text('Places'),
                   ),
 
                   SizedBox(
-                    height: 100,
+                    height: MediaQuery.of(context).size.height * .2,
                     width: MediaQuery.of(context).size.width,
                     child: FirestoreQueryBuilder<Map<String, dynamic>>(
                       query: FirebaseFirestore.instance
@@ -183,12 +188,16 @@ class _home1State extends State<home1> {
                             log(places.toString());
 
                             return Padding(
-                              padding: EdgeInsets.only(left: 8.0),
+                              padding: EdgeInsets.only(left: 8.0, top: 9.0),
                               child: Container(
-                                height:
-                                    MediaQuery.of(context).size.height * .18,
-                                width: MediaQuery.of(context).size.width * .6,
-                                child: Image.network(places['image_url']),
+                                height: MediaQuery.of(context).size.height * 5,
+                                width: MediaQuery.of(context).size.width * .3,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    image: DecorationImage(
+                                        image:
+                                            NetworkImage(places['image_url']),
+                                        fit: BoxFit.cover)),
                               ),
                             );
                           },
@@ -244,9 +253,10 @@ class _home1State extends State<home1> {
                   SizedBox(
                     height: 10,
                   ),
+
                   //people.................................................................................
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 13.0),
+                    padding: EdgeInsets.only(top: 10, left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -298,53 +308,138 @@ class _home1State extends State<home1> {
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Row(
                         children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * .23,
-                            width: MediaQuery.of(context).size.width * .95,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                      color:
-                                          const Color.fromARGB(255, 94, 0, 0),
-                                      blurRadius: 5,
-                                      offset: Offset(0, 2))
-                                ],
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/r.png"),
-                                    fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(10)),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * .25,
+                            width: MediaQuery.of(context).size.width,
+                            child: FirestoreQueryBuilder<Map<String, dynamic>>(
+                              query: FirebaseFirestore.instance
+                                  .collection('places')
+                                  .where('region', isEqualTo: 'bathery'),
+                              builder: (context, snapshot, _) {
+                                return ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: snapshot.docs.length,
+                                  itemBuilder: (context, index) {
+                                    if (snapshot.hasMore &&
+                                        index + 1 == snapshot.docs.length) {
+                                      snapshot.fetchMore();
+                                    }
+
+                                    final places = snapshot.docs[index].data();
+                                    log(places.toString());
+
+                                    return Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 8.0, top: 9.0),
+                                      child: Center(
+                                        child: Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              5,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .90,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      places['image_url']),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                          // Container(
+                          //   height: MediaQuery.of(context).size.height * .23,
+                          //   width: MediaQuery.of(context).size.width * .95,
+                          //   decoration: BoxDecoration(
+                          //       boxShadow: [
+                          //         BoxShadow(
+                          //             color: Colors.black,
+                          //             blurRadius: 5,
+                          //             offset: Offset(1, 2))
+                          //       ],
+                          //       image: DecorationImage(
+                          //           image: AssetImage("assets/images/r.png"),
+                          //           fit: BoxFit.cover),
+                          //       borderRadius: BorderRadius.circular(10)),
+                          // ),
+                          SizedBox(
+                            width: 5,
                           ),
                           SizedBox(
-                            width: 10,
+                            height: MediaQuery.of(context).size.height * .25,
+                            width: MediaQuery.of(context).size.width,
+                            child: FirestoreQueryBuilder<Map<String, dynamic>>(
+                              query: FirebaseFirestore.instance
+                                  .collection('places')
+                                  .where('region', isEqualTo: 'bathery'),
+                              builder: (context, snapshot, _) {
+                                return ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: snapshot.docs.length,
+                                  itemBuilder: (context, index) {
+                                    if (snapshot.hasMore &&
+                                        index + 1 == snapshot.docs.length) {
+                                      snapshot.fetchMore();
+                                    }
+
+                                    final places = snapshot.docs[index].data();
+                                    log(places.toString());
+
+                                    return Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 8.0, top: 9.0),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                5,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                .90,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            image: DecorationImage(
+                                                image: NetworkImage(
+                                                    places['image_url']),
+                                                fit: BoxFit.cover)),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * .23,
-                            width: MediaQuery.of(context).size.width * .95,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                      color:
-                                          const Color.fromARGB(255, 94, 0, 0),
-                                      blurRadius: 5,
-                                      offset: Offset(1, 2))
-                                ],
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/r.png"),
-                                    fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
+                          // Container(
+                          //   height: MediaQuery.of(context).size.height * .23,
+                          //   width: MediaQuery.of(context).size.width * .95,
+                          //   decoration: BoxDecoration(
+                          //       boxShadow: [
+                          //         BoxShadow(
+                          //             color:
+                          //                 const Color.fromARGB(255, 94, 0, 0),
+                          //             blurRadius: 5,
+                          //             offset: Offset(1, 2))
+                          //       ],
+                          //       image: DecorationImage(
+                          //           image: AssetImage("assets/images/r.png"),
+                          //           fit: BoxFit.cover),
+                          //       borderRadius: BorderRadius.circular(10)),
+                          // ),
                         ],
                       ),
                     ),
                   ),
-                  // Text(
-                  //   "mhkjhj's",
-                  //   style: TextStyle(
-                  //       fontSize: 55,
-                  //       color: Color(0xff0000000),
-                  //       fontWeight: FontWeight.w700,
-                  //       fontFamily: 'fam'),
-                  // ),
                 ],
               ),
             ),

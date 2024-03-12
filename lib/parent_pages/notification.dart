@@ -11,7 +11,7 @@ class _notificationState extends State<notification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(top: 16.0),
@@ -27,221 +27,258 @@ class _notificationState extends State<notification> {
                 //notific.................................................................................................................
 
                 Container(
-                  height: MediaQuery.of(context).size.height * .15,
+                  height: MediaQuery.of(context).size.height * .13,
                   width: MediaQuery.of(context).size.width,
-                  decoration:
-                      BoxDecoration(color: Color(0xfff9f4f4), boxShadow: [
-                    BoxShadow(
-                        color: Color.fromARGB(255, 121, 4, 4).withOpacity(0.5),
-                        blurRadius: 4,
-                        offset: Offset(0, 4))
-                  ]),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.shade900.withOpacity(0.5),
+                            blurRadius: 4,
+                            offset: Offset(1, 4))
+                      ]),
                   child: Column(
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
-                                left: 20.0, top: 20.0, right: 20.0),
+                                left: 20.0, top: 20.0, right: 25.0),
                             child: Text(
                               'Notification',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w400),
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0, top: 20.0, right: 20.0),
+                            child: Icon(Icons.search),
+                          )
                         ],
                       ),
                       //recom.............................................................................................
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 20.0, top: 20.0, right: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            //all..........................................................................
-                            Container(
-                              height: MediaQuery.of(context).size.height * .03,
-                              width: MediaQuery.of(context).size.width * .18,
-                              decoration: BoxDecoration(
-                                  color: Color(0xffff0000),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(
-                                child: Text(
-                                  'all',
-                                  style: TextStyle(
-                                    color: Color(0xfff9f4f4),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            //traveler....................................................................
-                            Container(
-                              height: MediaQuery.of(context).size.height * .03,
-                              width: MediaQuery.of(context).size.width * .18,
-                              decoration: BoxDecoration(
-                                  color: Color(0xffff0000),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(
-                                child: Text(
-                                  'travelers',
-                                  style: TextStyle(color: Color(0xfff9f4f4)),
-                                ),
-                              ),
-                            ),
-                            //resort...................................................
-                            Container(
+                        child: SingleChildScrollView(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              //all..........................................................................
+                              Container(
                                 height:
                                     MediaQuery.of(context).size.height * .03,
                                 width: MediaQuery.of(context).size.width * .18,
                                 decoration: BoxDecoration(
-                                    color: Color(0xffff0000),
+                                    color: Color.fromARGB(255, 0, 0, 0),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(
                                   child: Text(
-                                    'resort',
-                                    style: TextStyle(color: Color(0xfff9f4f4)),
+                                    'all',
+                                    style: TextStyle(
+                                      color: Color(0xfff9f4f4),
+                                    ),
                                   ),
-                                )),
-                            // taxi.................................................
-                            Container(
-                              height: MediaQuery.of(context).size.height * .03,
-                              width: MediaQuery.of(context).size.width * .18,
-                              decoration: BoxDecoration(
-                                  color: Color(0xffff0000),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(
-                                child: Text(
-                                  'taxi',
-                                  style: TextStyle(color: Color(0xfff9f4f4)),
                                 ),
                               ),
-                            ),
-                          ],
+                              //traveler....................................................................
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * .03,
+                                width: MediaQuery.of(context).size.width * .18,
+                                decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                  child: Text(
+                                    'travelers',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 0, 0, 0)),
+                                  ),
+                                ),
+                              ),
+                              //resort...................................................
+                              Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * .03,
+                                  width:
+                                      MediaQuery.of(context).size.width * .18,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Center(
+                                    child: Text(
+                                      'resort',
+                                      style: TextStyle(
+                                          color: Color.fromARGB(255, 0, 0, 0)),
+                                    ),
+                                  )),
+                              // taxi.................................................
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * .03,
+                                width: MediaQuery.of(context).size.width * .18,
+                                decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Text(
+                                  'taxi',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 0, 0)),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 //taxi..................................................................
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 20.0),
-                  child: Text(
-                    'Today',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black),
-                  ),
-                ),
                 Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 7.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * .07,
-                        width: MediaQuery.of(context).size.width * .9,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(113, 255, 96, 96)
-                                .withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(12)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 20.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * .07,
-                        width: MediaQuery.of(context).size.width * .9,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(113, 255, 96, 96)
-                                .withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(12)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 20.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * .07,
-                        width: MediaQuery.of(context).size.width * .9,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(113, 255, 96, 96)
-                                .withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(12)),
-                      ),
-                    ),
-                  ],
-                ),
-                //yesterday................................................................
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 50.0),
-                  child: Text(
-                    'Yesterday',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black),
-                  ),
-                ),
-                SingleChildScrollView(
-                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * .07,
-                          width: MediaQuery.of(context).size.width * .9,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(12)),
-                        ),
-                      ),
-                      Padding(
                         padding: const EdgeInsets.only(left: 20.0, top: 20.0),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * .07,
-                          width: MediaQuery.of(context).size.width * .9,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(12)),
+                        child: Text(
+                          'Today',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black),
                         ),
-                      ),
+                      ), //today........................................................................
                       Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 20.0),
+                        padding: const EdgeInsets.only(top: 8.0),
                         child: Container(
-                          height: MediaQuery.of(context).size.height * .07,
-                          width: MediaQuery.of(context).size.width * .9,
+                          height: MediaQuery.of(context).size.height * .1,
+                          width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(12)),
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                              border: Border(
+                                  top: BorderSide(color: Colors.black12),
+                                  bottom: BorderSide(color: Colors.black12))),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 8.0, left: 8.0, bottom: 4),
+                                          child: Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                .05,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .1,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                  color: Colors.white),
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/david.png"),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text("notification"),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 25.0, right: 8),
+                                      child: Icon(Icons.delete),
+                                    )
+                                  ],
+                                ),
+                                //firstbox...................................................................................
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 20.0),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * .07,
-                          width: MediaQuery.of(context).size.width * .9,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(12)),
+                      Container(
+                        height: MediaQuery.of(context).size.height * .1,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            border: Border(
+                                bottom: BorderSide(color: Colors.black12))),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8.0, left: 8.0, bottom: 4),
+                                        child: Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              .05,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .1,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            shape: BoxShape.circle,
+                                            border:
+                                                Border.all(color: Colors.white),
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/images/david.png"),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text("notification"),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 25.0, right: 8),
+                                    child: Icon(Icons.delete),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                          //secondbox...................................................................
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 20.0),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * .07,
-                          width: MediaQuery.of(context).size.width * .9,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(113, 255, 96, 96)
-                                  .withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(12)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                    ]),
               ],
             ),
           ),

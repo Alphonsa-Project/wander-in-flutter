@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wander_in/Blurrypage.dart';
+import 'package:wander_in/authentication/login.dart';
 import 'package:wander_in/parent_pages/account1.dart';
 import 'package:wander_in/authentication/authstate.dart';
 import 'package:wander_in/blogs.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: noti2());
+        home: ParentPage());
+
   }
 }

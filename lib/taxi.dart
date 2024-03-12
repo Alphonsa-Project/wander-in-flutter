@@ -22,7 +22,7 @@ class _taxiState extends State<taxi> {
                 Container(
                   height: MediaQuery.of(context).size.height * .5,
                   width: MediaQuery.of(context).size.width,
-                  color: Color.fromARGB(255, 255, 0, 0),
+                  color: Colors.red.shade900,
                   child: Stack(
                     children: [
                       Positioned(
@@ -135,15 +135,12 @@ class _taxiState extends State<taxi> {
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.shade500,
-                          blurRadius: 2,
-                          offset: Offset(2, 0))
-                    ],
-                    color: Colors.white),
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.shade500,
+                      blurRadius: 2,
+                      offset: Offset(2, 0))
+                ], color: Colors.white),
                 child: Column(
                   children: [
                     Container(
@@ -158,7 +155,11 @@ class _taxiState extends State<taxi> {
                               bottom: BorderSide(color: Colors.black12))),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: Center(child: Text("taxi account")),
+                        child: Center(
+                            child: Text(
+                          "taxi account",
+                          style: TextStyle(fontSize: 18),
+                        )),
                       ),
                     ),
                     Container(
@@ -175,7 +176,7 @@ class _taxiState extends State<taxi> {
                           children: [
                             Icon(
                               Icons.local_taxi,
-                              color: Colors.amber,
+                              color: Colors.red,
                               size: 30,
                             ),
                             Center(
@@ -190,12 +191,12 @@ class _taxiState extends State<taxi> {
                                       child: Container(
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                .008,
+                                                .005,
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                .7,
+                                                .5,
                                         decoration: BoxDecoration(
-                                            color: Colors.red,
+                                            color: Colors.amber,
                                             borderRadius:
                                                 BorderRadius.circular(20)),
                                       ),
@@ -215,7 +216,7 @@ class _taxiState extends State<taxi> {
                             ),
                             Icon(
                               Icons.location_pin,
-                              color: Colors.amber,
+                              color: Colors.red,
                               size: 30,
                             ),
                           ],
@@ -249,7 +250,7 @@ class _taxiState extends State<taxi> {
                                   height: 20,
                                   width: 100,
                                   decoration: BoxDecoration(
-                                    color: Colors.red.shade700,
+                                    color: Colors.black,
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Center(
