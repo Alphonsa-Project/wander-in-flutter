@@ -11,7 +11,9 @@ import 'package:wander_in/authentication/authstate.dart';
 import 'package:wander_in/blogs.dart';
 
 import 'package:wander_in/firebase_options.dart';
-// import 'package:wander_in/notification.dart';
+import 'package:wander_in/parent_pages/home2.dart';
+import 'package:wander_in/parent_pages/noti2.dart';
+import 'package:wander_in/parent_pages/notification.dart';
 import 'package:wander_in/parent_pages/parent_page.dart';
 import 'package:wander_in/placedetailonly.dart';
 
@@ -62,13 +64,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: home1(),
-    );
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: ParentPage());
   }
 }

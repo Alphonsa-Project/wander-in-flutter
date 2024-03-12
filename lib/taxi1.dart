@@ -11,7 +11,7 @@ class _taxi1State extends State<taxi1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 176, 176),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
           child: Padding(
               padding: const EdgeInsets.only(top: 16.0),
@@ -30,7 +30,7 @@ class _taxi1State extends State<taxi1> {
                               height: MediaQuery.of(context).size.height * .15,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                  color: Color(0xfff9f4f4),
+                                  color: Color.fromARGB(255, 255, 255, 255),
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(20),
                                       bottomRight: Radius.circular(20)),
@@ -77,8 +77,8 @@ class _taxi1State extends State<taxi1> {
                                                   .width *
                                               .18,
                                           decoration: BoxDecoration(
-                                              color: const Color.fromARGB(
-                                                  255, 255, 198, 198),
+                                              color:
+                                                  Color.fromARGB(255, 0, 0, 0),
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               boxShadow: [
@@ -93,13 +93,10 @@ class _taxi1State extends State<taxi1> {
                                             child: Text(
                                               'All',
                                               style: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 0, 0, 0),
-                                              ),
+                                                  color: Colors.white),
                                             ),
                                           ),
                                         ),
-                                        //traveler....................................................................
                                         Container(
                                           height: MediaQuery.of(context)
                                                   .size
@@ -110,8 +107,8 @@ class _taxi1State extends State<taxi1> {
                                                   .width *
                                               .18,
                                           decoration: BoxDecoration(
-                                              color: const Color.fromARGB(
-                                                  255, 255, 198, 198),
+                                              color:
+                                                  Color.fromARGB(255, 0, 0, 0),
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               boxShadow: [
@@ -124,45 +121,43 @@ class _taxi1State extends State<taxi1> {
                                               ]),
                                           child: Center(
                                             child: Text(
-                                              '4 Seater',
+                                              '4 seater',
                                               style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                      255, 0, 0, 0)),
+                                                  color: Colors.white),
                                             ),
                                           ),
                                         ),
                                         //resort...................................................
                                         Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                .03,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .18,
-                                            decoration: BoxDecoration(
-                                                color: const Color.fromARGB(
-                                                    255, 255, 198, 198),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors
-                                                          .grey.shade500
-                                                          .withOpacity(.5),
-                                                      blurRadius: 5.0,
-                                                      spreadRadius: .0,
-                                                      offset: Offset(4.0, 4.0))
-                                                ]),
-                                            child: Center(
-                                              child: Text(
-                                                '6 Seater',
-                                                style: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 0, 0, 0)),
-                                              ),
-                                            )),
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              .03,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .18,
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  Color.fromARGB(255, 0, 0, 0),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Colors.grey.shade500
+                                                        .withOpacity(.5),
+                                                    blurRadius: 5.0,
+                                                    spreadRadius: .0,
+                                                    offset: Offset(4.0, 4.0)),
+                                              ]),
+                                          child: Center(
+                                            child: Text(
+                                              '5 seater',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ),
                                         // taxi.................................................
                                         Container(
                                           height: MediaQuery.of(context)
@@ -174,8 +169,8 @@ class _taxi1State extends State<taxi1> {
                                                   .width *
                                               .29,
                                           decoration: BoxDecoration(
-                                              color: const Color.fromARGB(
-                                                  255, 255, 198, 198),
+                                              color:
+                                                  Color.fromARGB(255, 0, 0, 0),
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               boxShadow: [
@@ -190,8 +185,7 @@ class _taxi1State extends State<taxi1> {
                                             child: Text(
                                               'Auto Rickshaws',
                                               style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                      255, 0, 0, 0)),
+                                                  color: Colors.white),
                                             ),
                                           ),
                                         ),
@@ -202,27 +196,7 @@ class _taxi1State extends State<taxi1> {
                               ),
                             ),
                             //taxi..................................................................
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * .2,
-                                height:
-                                    MediaQuery.of(context).size.height * .04,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: const Color.fromARGB(
-                                        255, 255, 184, 184)),
-                                child: Center(
-                                  child: Text(
-                                    'Nearby',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black),
-                                  ),
-                                ),
-                              ),
-                            ),
+
                             Column(
                               children: [
                                 Padding(
@@ -232,16 +206,12 @@ class _taxi1State extends State<taxi1> {
                                         .12,
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
-                                        color:
-                                            Color.fromARGB(255, 255, 250, 250),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Colors.grey.shade500
-                                                  .withOpacity(.5),
-                                              blurRadius: 5.0,
-                                              spreadRadius: .0,
-                                              offset: Offset(4.0, 4.0))
-                                        ]),
+                                        color: Colors.white,
+                                        border: Border(
+                                            top: BorderSide(
+                                                color: Colors.black12),
+                                            bottom: BorderSide(
+                                                color: Colors.black12))),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -315,23 +285,10 @@ class _taxi1State extends State<taxi1> {
                                                     .width *
                                                 0.088,
                                             decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: Colors.white,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color:
-                                                          Colors.grey.shade500,
-                                                      blurRadius: 5.0,
-                                                      spreadRadius: 1.0,
-                                                      offset: Offset(4.0, 4.0)),
-                                                  BoxShadow(
-                                                      color: Colors.white,
-                                                      blurRadius: 5.0,
-                                                      spreadRadius: 1.0,
-                                                      offset:
-                                                          Offset(-2.0, -2.0))
-                                                ]),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: Colors.white,
+                                            ),
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceEvenly,
@@ -362,10 +319,130 @@ class _taxi1State extends State<taxi1> {
                                                           .height *
                                                       0.022,
                                                   decoration: BoxDecoration(
-                                                      color: Colors.yellow,
+                                                      color: Colors.red,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10)),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 7.0),
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        .12,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.black12))),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Center(
+                                            child: Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.06,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.13,
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/t1.png"),
+                                                  fit: BoxFit
+                                                      .cover, // Adjust this as needed
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Center(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 10.0),
+                                                child: Text(
+                                                  'User Name',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                              // Vehicle Model Name
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'Vehicle Model Name',
+                                                  style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                            255, 1, 1, 1)
+                                                        .withOpacity(0.7),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 15.0, top: 8, bottom: 8),
+                                          child: Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                3,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.088,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: Colors.white,
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.044,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.022,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.green,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                  ),
                                                 ),
                                                 Container(
                                                   width: MediaQuery.of(context)
@@ -393,330 +470,7 @@ class _taxi1State extends State<taxi1> {
                               ],
                             ),
 
-                            Column(
-                              children: [
-                                Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * .12,
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 255, 250, 250),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.shade500
-                                                .withOpacity(.5),
-                                            blurRadius: 5.0,
-                                            spreadRadius: .0,
-                                            offset: Offset(4.0, 4.0))
-                                      ]),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Center(
-                                          child: Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.06,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.13,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/t1.png"),
-                                                fit: BoxFit
-                                                    .cover, // Adjust this as needed
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10.0),
-                                              child: Text(
-                                                'User Name',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ),
-                                            // Vehicle Model Name
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                'Vehicle Model Name',
-                                                style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                          255, 1, 1, 1)
-                                                      .withOpacity(0.7),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 15.0, top: 8, bottom: 8),
-                                        child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              3,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.088,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              color: Colors.white,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey.shade500,
-                                                    blurRadius: 5.0,
-                                                    spreadRadius: 1.0,
-                                                    offset: Offset(4.0, 4.0)),
-                                                BoxShadow(
-                                                    color: Colors.white,
-                                                    blurRadius: 5.0,
-                                                    spreadRadius: 1.0,
-                                                    offset: Offset(-2.0, -2.0))
-                                              ]),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.044,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.022,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.green,
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                              ),
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.044,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.022,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.yellow,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                              ),
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.044,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.022,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.red,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
                             //yesterday................................................................
-
-                            Padding(
-                              padding: const EdgeInsets.only(top: 7.0),
-                              child: Container(
-                                height:
-                                    MediaQuery.of(context).size.height * .12,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 255, 250, 250),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.shade500
-                                              .withOpacity(.5),
-                                          blurRadius: 5.0,
-                                          spreadRadius: .0,
-                                          offset: Offset(4.0, 4.0))
-                                    ]),
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Center(
-                                          child: Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.06,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.13,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/t1.png"),
-                                                fit: BoxFit
-                                                    .cover, // Adjust this as needed
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10.0),
-                                              child: Text(
-                                                'User Name',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ),
-                                            // Vehicle Model Name
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                'Vehicle Model Name',
-                                                style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                          255, 1, 1, 1)
-                                                      .withOpacity(0.7),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 15.0, top: 8, bottom: 8),
-                                        child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              3,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.088,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              color: Colors.white,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey.shade500,
-                                                    blurRadius: 5.0,
-                                                    spreadRadius: 1.0,
-                                                    offset: Offset(4.0, 4.0)),
-                                                BoxShadow(
-                                                    color: Colors.white,
-                                                    blurRadius: 5.0,
-                                                    spreadRadius: 1.0,
-                                                    offset: Offset(-2.0, -2.0))
-                                              ]),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.044,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.022,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.green,
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                              ),
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.044,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.022,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.yellow,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                              ),
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.044,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.022,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.red,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      )
-                                    ]),
-                              ),
-                            ),
                           ]))))),
     );
   }
