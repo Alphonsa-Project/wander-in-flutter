@@ -17,7 +17,10 @@ class _noti2State extends State<noti2> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.black, Colors.purple],
+              colors: [
+                Color.fromARGB(255, 0, 0, 0),
+                Color.fromARGB(255, 255, 17, 0)
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -42,7 +45,10 @@ class _noti2State extends State<noti2> {
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                              colors: [Colors.black, Colors.purple],
+                              colors: [
+                                const Color.fromARGB(255, 255, 0, 0),
+                                Color.fromARGB(255, 33, 0, 0)
+                              ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
@@ -278,7 +284,10 @@ class _noti2State extends State<noti2> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      // Your notification content here
+                                      Text(
+                                        'Resort fjdfhak dhfakfh kashdfadfj lahf ahf fdsiuhf laksjdfh iuahdf aidhfjak afalkh fkl',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
                                     ],
                                   ),
                                 ),

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:wander_in/user_id.dart';
 
 class home1 extends StatefulWidget {
   const home1({super.key});
@@ -12,6 +13,21 @@ class home1 extends StatefulWidget {
 }
 
 class _home1State extends State<home1> {
+  String region = 'region';
+  @override
+  void initState() {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(getuid())
+        .get()
+        .then((DocumentSnapshot userDoc) {
+      if (userDoc.exists) {
+        region = userDoc['region'];
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +89,7 @@ class _home1State extends State<home1> {
                     child: FirestoreQueryBuilder<Map<String, dynamic>>(
                       query: FirebaseFirestore.instance
                           .collection('users')
-                          .where('region', isEqualTo: 'bathery'),
+                          .where('region', isEqualTo: region),
                       builder: (context, snapshot, _) {
                         return ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -172,7 +188,7 @@ class _home1State extends State<home1> {
                     child: FirestoreQueryBuilder<Map<String, dynamic>>(
                       query: FirebaseFirestore.instance
                           .collection('places')
-                          .where('region', isEqualTo: 'bathery'),
+                          .where('region', isEqualTo: region),
                       builder: (context, snapshot, _) {
                         return ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -313,8 +329,9 @@ class _home1State extends State<home1> {
                             width: MediaQuery.of(context).size.width,
                             child: FirestoreQueryBuilder<Map<String, dynamic>>(
                               query: FirebaseFirestore.instance
-                                  .collection('places')
-                                  .where('region', isEqualTo: 'bathery'),
+                                  .collection('feed')
+                                  .where('region', isEqualTo: region)
+                                  .orderBy('order', descending: true),
                               builder: (context, snapshot, _) {
                                 return ListView.builder(
                                   scrollDirection: Axis.horizontal,
@@ -325,10 +342,8 @@ class _home1State extends State<home1> {
                                         index + 1 == snapshot.docs.length) {
                                       snapshot.fetchMore();
                                     }
-
                                     final places = snapshot.docs[index].data();
                                     log(places.toString());
-
                                     return Padding(
                                       padding:
                                           EdgeInsets.only(left: 8.0, top: 9.0),
@@ -347,7 +362,7 @@ class _home1State extends State<home1> {
                                                   BorderRadius.circular(12),
                                               image: DecorationImage(
                                                   image: NetworkImage(
-                                                      places['image_url']),
+                                                      places['img_url']),
                                                   fit: BoxFit.cover)),
                                         ),
                                       ),
