@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wander_in/parent_pages/GlassmorphismContainer.dart';
+import 'package:wander_in/GlassMorphismContainer.dart';
 
 class Home2 extends StatelessWidget {
   @override

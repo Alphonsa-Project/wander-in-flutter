@@ -1,4 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:wander_in/plans/plan_details.dart';
+import 'package:wander_in/user_id.dart';
 
 class Planspage extends StatefulWidget {
   const Planspage({Key? key}) : super(key: key);
@@ -21,222 +26,195 @@ class _PlanspageState extends State<Planspage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * .13,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade900.withOpacity(0.5),
-                                blurRadius: 4,
-                                offset: Offset(1, 4))
-                          ]),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, top: 20.0, right: 25.0),
-                                child: Text(
-                                  'Plans',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w400),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 70,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade900.withOpacity(0.5),
+                                  blurRadius: 4,
+                                  offset: Offset(1, 4))
+                            ]),
+                        child: const Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 20.0, top: 20.0, right: 25.0),
+                                  child: Text(
+                                    'Plans',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w400),
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, top: 20.0, right: 20.0),
-                                child: Icon(Icons.search),
-                              )
-                            ],
-                          ),
-                          //recom.............................................................................................
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, top: 20.0, right: 20.0),
-                            child: SingleChildScrollView(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  //all..........................................................................
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        .03,
-                                    width:
-                                        MediaQuery.of(context).size.width * .18,
-                                    decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 0, 0, 0),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Center(
-                                      child: Text(
-                                        'trips',
-                                        style: TextStyle(
-                                          color: Color(0xfff9f4f4),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  //traveler....................................................................
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        .03,
-                                    width:
-                                        MediaQuery.of(context).size.width * .18,
-                                    decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 0, 0, 0),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Center(
-                                      child: Text(
-                                        'saves',
-                                        style:
-                                            TextStyle(color: Color(0xfff9f4f4)),
-                                      ),
-                                    ),
-                                  ),
-                                  //resort...................................................
-
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        .03,
-                                    width:
-                                        MediaQuery.of(context).size.width * .18,
-                                    decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 0, 0, 0),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Center(
-                                      child: Text(
-                                        'taxi',
-                                        style:
-                                            TextStyle(color: Color(0xfff9f4f4)),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                // Padding(
+                                //   padding: EdgeInsets.only(
+                                //       left: 20.0, top: 20.0, right: 20.0),
+                                //   child: Icon(Icons.search),
+                                // )
+                              ],
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text("date"),
-                    ),
-                    SizedBox(
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 10.0),
+                    //   child: Text("date"),
+                    // ),
+                    const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .25,
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(color: Colors.black26),
-                              top: BorderSide(color: Colors.black26))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * .2,
-                            width: MediaQuery.of(context).size.width * .75,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/r.png"),
-                                    fit: BoxFit.cover),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.shade500,
-                                      offset: Offset(2, 0),
-                                      blurRadius: 5),
+                    FirestoreQueryBuilder<Map<String, dynamic>>(
+                      query: FirebaseFirestore.instance
+                          .collection('plans')
+                          .where('uid', isEqualTo: getuid())
+                          .orderBy('date', descending: true),
+                      builder: (context, snapshot, _) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: snapshot.docs.length,
+                          itemBuilder: (context, index) {
+                            if (snapshot.hasMore &&
+                                index + 1 == snapshot.docs.length) {
+                              snapshot.fetchMore();
+                            }
+
+                            final docData = snapshot.docs[index].data();
+                            final document_id = snapshot.docs[index].id;
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => PlanDetails(
+                                                    plan_name:
+                                                        docData['plan_name'],
+                                                    plan_id: document_id,
+                                                  )));
+                                    },
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .2,
+                                      width: MediaQuery.of(context).size.width *
+                                          .75,
+                                      child: Stack(
+                                        alignment: Alignment.topLeft,
+                                        children: [
+                                          if (docData['image_url'].isNotEmpty)
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              child: SizedBox(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    .2,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    .75,
+                                                child: FadeInImage(
+                                                  image: NetworkImage(
+                                                      docData['image_url']),
+                                                  placeholder: const AssetImage(
+                                                      'assets/images/r.png'),
+                                                  fit: BoxFit.cover,
+                                                  width: 60.0,
+                                                  height: 60.0,
+                                                ),
+                                              ),
+                                            ),
+                                          if (docData['image_url'].isEmpty)
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              child: SizedBox(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    .2,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    .75,
+                                                child: const FadeInImage(
+                                                  image: AssetImage(
+                                                      'assets/images/r.png'),
+                                                  placeholder: AssetImage(
+                                                      'assets/images/r.png'),
+                                                  fit: BoxFit.cover,
+                                                  width: 60.0,
+                                                  height: 60.0,
+                                                ),
+                                              ),
+                                            ),
+                                          Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  .03,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  .2,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white
+                                                      .withOpacity(.7),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomRight:
+                                                        Radius.circular(12),
+                                                  )),
+                                              child: Center(
+                                                  child: Text(
+                                                      docData['plan_name']))),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const Gap(20),
+                                  GestureDetector(
+                                    onTap: () {
+                                      deletePlan(document_id);
+                                    },
+                                    child: const Center(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(right: 20.0),
+                                        child: Icon(Icons.delete),
+                                      ),
+                                    ),
+                                  )
                                 ],
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(12),
-                                    bottomRight: Radius.circular(12))),
-                            child: Stack(
-                              alignment: Alignment.topLeft,
-                              children: [
-                                Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * .03,
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(.7),
-                                      borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(12),
-                                      )),
-                                  child: Center(child: Text("plan name")),
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: Icon(Icons.delete),
-                          )
-                        ],
-                      ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .25,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(color: Colors.black26),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * .2,
-                            width: MediaQuery.of(context).size.width * .75,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/r.png"),
-                                    fit: BoxFit.cover),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.shade500,
-                                      offset: Offset(2, 0),
-                                      blurRadius: 5),
-                                ],
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(12),
-                                    bottomRight: Radius.circular(12))),
-                            child: Stack(
-                              alignment: Alignment.topLeft,
-                              children: [
-                                Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * .03,
-                                  width: MediaQuery.of(context).size.width * .2,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(.7),
-                                      borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(12),
-                                      )),
-                                  child: Center(child: Text("plan name")),
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: Icon(Icons.delete),
-                          )
-                        ],
-                      ),
-                    )
                   ],
                 ),
               ),
             ),
           ),
         ));
+  }
+
+  deletePlan(String docId) {
+    FirebaseFirestore.instance.collection('plans').doc(docId).delete();
   }
 }

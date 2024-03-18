@@ -21,7 +21,7 @@ class Loading extends StatelessWidget {
           color: Colors.white,
           width: 20,
           height: 20,
-          child: const CircularProgressIndicator(
+          child: CircularProgressIndicator(
             color: Colors.grey,
             strokeWidth: 2,
           ),

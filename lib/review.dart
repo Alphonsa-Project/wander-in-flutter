@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wander_in/parent_pages/GlassMorphismContainer.dart';
+import 'package:wander_in/GlassMorphismContainer.dart';
 
 class review extends StatefulWidget {
   const review({super.key});

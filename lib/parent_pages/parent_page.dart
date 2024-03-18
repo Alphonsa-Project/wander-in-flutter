@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wander_in/parent_pages/account1.dart';
-import 'package:wander_in/parent_pages/home1.dart';
+import 'package:wander_in/parent_pages/profile.dart';
+import 'package:wander_in/parent_pages/home_page.dart';
 import 'package:wander_in/parent_pages/map.dart';
 import 'package:wander_in/parent_pages/notification.dart';
 import 'package:wander_in/parent_pages/plans.dart';
@@ -37,11 +37,11 @@ class _ParentPageState extends State<ParentPage> {
           });
         },
         children: const [
-          home1(),
+          HomePage(),
           MapPage(),
           Planspage(),
-          notification(),
-          account1()
+          NotificationPage(),
+          Profile()
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
