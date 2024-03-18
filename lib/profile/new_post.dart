@@ -63,7 +63,7 @@ class _NewPostsState extends State<NewPosts> {
                 padding: const EdgeInsets.only(left: 8.0),
                 child: TextFormField(
                   controller: placeCtrl,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.name,
                   decoration: const InputDecoration(
                     enabled: true,
                     border: InputBorder.none,

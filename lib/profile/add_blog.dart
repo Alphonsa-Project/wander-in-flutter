@@ -45,7 +45,7 @@ class _AddBlogState extends State<AddBlog> {
                         padding: const EdgeInsets.only(left: 8.0),
                         child: TextFormField(
                           controller: blogCtrl,
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.name,
                           decoration: const InputDecoration(
                             enabled: true,
                             border: InputBorder.none,
@@ -59,7 +59,11 @@ class _AddBlogState extends State<AddBlog> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          submitBlog();
+                          if (blogCtrl.text.isNotEmpty) {
+                            submitBlog();
+                          } else {
+                            newCustomMessage(context, 'Please add some text');
+                          }
                         },
                         child: const Text('UPLOAD'))
                   ],

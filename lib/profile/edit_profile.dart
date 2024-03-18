@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:wander_in/loading/loading.dart';
@@ -18,11 +21,29 @@ class _EditProfileState extends State<EditProfile> {
   final TextEditingController nameCtrl = TextEditingController();
   String region = 'Region        ';
   bool loading = true;
+  var file;
+  String fileName = '';
+  String propic = '';
+
+  pickFiles() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      file = File(result.files.single.path!);
+      fileName = result.files.single.name;
+      setState(() {});
+      // log(result.files.single.name);
+    } else {
+      // User canceled the picker
+    }
+  }
+
   @override
   void initState() {
     emailCtrl.text = widget.userDoc['email'];
     nameCtrl.text = widget.userDoc['name'];
     region = widget.userDoc['region'];
+    propic = widget.userDoc['image_url'];
     setState(() {
       loading = false;
     });
@@ -42,6 +63,19 @@ class _EditProfileState extends State<EditProfile> {
                 padding: const EdgeInsets.all(18.0),
                 child: ListView(
                   children: [
+                    Gap(10),
+                    GestureDetector(
+                      onTap: () {
+                        pickFiles();
+                      },
+                      child: Container(
+                        height: 60,
+                        width: 60,
+                        child: file == null
+                            ? Image.network(propic)
+                            : Image.file(file),
+                      ),
+                    ),
                     const Gap(10),
                     Container(
                       decoration: BoxDecoration(
@@ -136,15 +170,36 @@ class _EditProfileState extends State<EditProfile> {
           );
   }
 
-  submit() {
-    FirebaseFirestore.instance.collection('users').doc(getuid()).update({
-      'name': nameCtrl.text,
-      'email': emailCtrl.text,
-      'region': region,
-    }).then((value) {
-      Navigator.pop(context);
+  submit() async {
+    if (file != null) {
+      var storage = FirebaseStorage.instance;
+      var snapshotone = await storage
+          .ref()
+          .child('records')
+          .child(DateTime.now().toString() + fileName)
+          .putFile(file);
+      var downloadUrlone = await snapshotone.ref.getDownloadURL();
 
-      newCustomMessage(context, 'details will be updated shortly');
-    });
+      FirebaseFirestore.instance.collection('users').doc(getuid()).update({
+        'name': nameCtrl.text,
+        'email': emailCtrl.text,
+        'image_url': downloadUrlone,
+        'region': region,
+      }).then((value) {
+        Navigator.pop(context);
+
+        newCustomMessage(context, 'details will be updated shortly');
+      });
+    } else {
+      FirebaseFirestore.instance.collection('users').doc(getuid()).update({
+        'name': nameCtrl.text,
+        'email': emailCtrl.text,
+        'region': region,
+      }).then((value) {
+        Navigator.pop(context);
+
+        newCustomMessage(context, 'details will be updated shortly');
+      });
+    }
   }
 }
