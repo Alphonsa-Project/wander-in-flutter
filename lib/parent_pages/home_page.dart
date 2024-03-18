@@ -38,6 +38,20 @@ class _HomePageState extends State<HomePage> {
         setState(() {
           loading = false;
         });
+      } else {
+        FirebaseFirestore.instance
+            .collection('taxi')
+            .doc(getuid())
+            .get()
+            .then((DocumentSnapshot userDoc) {
+          if (userDoc.exists) {
+            region = userDoc['region'];
+            user_type = userDoc['user_type'];
+            setState(() {
+              loading = false;
+            });
+          }
+        });
       }
     });
     super.initState();

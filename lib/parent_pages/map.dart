@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:wander_in/hotels/view_hotel.dart';
 import 'package:wander_in/loading/loading.dart';
 import 'package:wander_in/message/message.dart';
 import 'package:wander_in/resort2.dart';
@@ -21,6 +22,7 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
   String region = 'region';
+  String name = '';
   List<Marker> markers = [];
   bool loading = true;
   Color hotelColor = Colors.black;
@@ -58,6 +60,7 @@ class _MapPageState extends State<MapPage> {
         .then((DocumentSnapshot userDoc) {
       if (userDoc.exists) {
         region = userDoc['region'];
+        name = userDoc['name'];
         setState(() {
           loading = false;
         });
@@ -71,7 +74,7 @@ class _MapPageState extends State<MapPage> {
   getHotelMarkers() async {
     var hotelList = await FirebaseFirestore.instance
         .collection('hotels')
-        .where('region', isEqualTo: region)
+        // .where('region', isEqualTo: region)
         .get();
     markers = hotelList.docs
         .map(
@@ -80,18 +83,15 @@ class _MapPageState extends State<MapPage> {
                 double.parse(doc.data()['long'].toString())),
             child: GestureDetector(
                 onTap: () {
-                  if (doc.data()['status'] == true) {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => SlotPage(
-                    //             docid: doc.id,
-                    //             station_doc: doc.data(),
-                    //           )),
-                    // );
-                  } else {
-                    newCustomMessage(context, 'currently not open');
-                  }
+                  // if (doc.data()['status'] == true) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ViewHotel(hotelDoc: doc.data())),
+                  );
+                  // } else {
+                  //   newCustomMessage(context, 'currently not open');
+                  // }
                 },
                 child: const Icon(
                   Icons.restaurant,
@@ -110,7 +110,7 @@ class _MapPageState extends State<MapPage> {
   getTaxiMarkers() async {
     var hotelList = await FirebaseFirestore.instance
         .collection('taxi')
-        .where('region', isEqualTo: region)
+        // .where('region', isEqualTo: region)
         .get();
     markers = hotelList.docs
         .map(
@@ -123,6 +123,7 @@ class _MapPageState extends State<MapPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => BookTaxi(
+                              user_name: name,
                               taxiData: doc.data(),
                             )),
                   );
@@ -156,7 +157,7 @@ class _MapPageState extends State<MapPage> {
   getResortMarkers() async {
     var hotelList = await FirebaseFirestore.instance
         .collection('resorts')
-        .where('region', isEqualTo: region)
+        // .where('region', isEqualTo: region)
         .get();
     markers = hotelList.docs
         .map(

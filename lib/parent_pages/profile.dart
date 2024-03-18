@@ -6,10 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:wander_in/GlassMorphismContainer.dart';
 import 'package:wander_in/authentication/authstate.dart';
+import 'package:wander_in/loading/loading.dart';
 import 'package:wander_in/profile/blogs.dart';
 import 'package:wander_in/places2.dart';
 import 'package:wander_in/posts.dart';
 import 'package:wander_in/posts1.dart';
+import 'package:wander_in/profile/current_taxi_booking.dart';
+import 'package:wander_in/profile/edit_profile.dart';
 import 'package:wander_in/profile/post.dart';
 import 'package:wander_in/resort2.dart';
 import 'package:wander_in/resortview.dart';
@@ -27,6 +30,8 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   String name = '';
   String img_url = '';
+  Map<String, dynamic> userdoc = {};
+  bool loading = true;
 
   @override
   void initState() {
@@ -38,7 +43,10 @@ class _ProfileState extends State<Profile> {
       if (userDoc.exists) {
         name = userDoc['name'];
         img_url = userDoc['image_url'];
-        setState(() {});
+        userdoc = userDoc.data() as Map<String, dynamic>;
+        setState(() {
+          loading = false;
+        });
       }
     });
     super.initState();
@@ -46,238 +54,278 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Container(
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  Gap(10),
-                  Container(
-                    height: MediaQuery.of(context).size.height * .5,
-                    width: MediaQuery.of(context).size.width,
-                    color: Color.fromARGB(255, 255, 0, 0),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * .5,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/r.png"),
-                            fit: BoxFit.cover),
-                      ),
-                      child: GlassMorphismContainer(
-                        height: MediaQuery.of(context).size.height * .5,
-                        width: MediaQuery.of(context).size.width,
-                        borderRadius: 0,
-                        // child: Stack(
-                        //   children: [
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 18.0),
-                          child: Center(
-                            // top: 30,
-                            // right: 130,
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 80,
-                                  width: 80,
-                                  child: img_url.isNotEmpty
-                                      ? ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(25),
-                                          child: FadeInImage(
-                                            image: NetworkImage(img_url),
-                                            placeholder: const AssetImage(
-                                                'assets/images/profile.png'),
-                                            fit: BoxFit.cover,
-                                            width: 80.0,
-                                            height: 80.0,
-                                          ),
-                                        )
-                                      : SizedBox(
-                                          width: 80,
-                                          height: 80,
-                                          child: Image.asset(
-                                              'assets/images/profile.png'),
-                                        ),
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      name,
-                                      style: TextStyle(
-                                          color: Color.fromARGB(
-                                              255, 255, 255, 255),
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    // Text(
-                                    //   "hyundai creta",
-                                    //   style: TextStyle(
-                                    //       color: Color.fromARGB(
-                                    //           181, 255, 255, 255)),
-                                    // ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * .20,
+    return loading
+        ? const Loading()
+        : Scaffold(
+            body: SafeArea(
                 child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade500,
-                            blurRadius: 2,
-                            offset: Offset(2, 0))
-                      ],
-                      color: Colors.white),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Column(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Container(
+                child: Stack(
+                  children: [
+                    Column(
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => UserPosts(
-                                          uid: getuid(),
-                                          name: name,
-                                          user_img: img_url,
-                                        )));
-                          },
+                        Gap(10),
+                        Container(
+                          height: MediaQuery.of(context).size.height * .5,
+                          width: MediaQuery.of(context).size.width,
+                          color: Color.fromARGB(255, 255, 0, 0),
                           child: Container(
-                            height: MediaQuery.of(context).size.height * .1,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                border: Border(
-                                    bottom: BorderSide(color: Colors.black12))),
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text("posts"),
-                                ),
-                                Icon(Icons.navigate_next),
-                              ],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        Blogs(uid: getuid())));
-                          },
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * .1,
+                            height: MediaQuery.of(context).size.height * .5,
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                border: Border(
-                                    bottom: BorderSide(color: Colors.black12))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text("blogs"),
+                              image: DecorationImage(
+                                  image: AssetImage("assets/images/r.png"),
+                                  fit: BoxFit.cover),
+                            ),
+                            child: GlassMorphismContainer(
+                              height: MediaQuery.of(context).size.height * .5,
+                              width: MediaQuery.of(context).size.width,
+                              borderRadius: 0,
+                              // child: Stack(
+                              //   children: [
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 18.0),
+                                child: Center(
+                                  // top: 30,
+                                  // right: 130,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 80,
+                                        width: 80,
+                                        child: img_url.isNotEmpty
+                                            ? ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(25),
+                                                child: FadeInImage(
+                                                  image: NetworkImage(img_url),
+                                                  placeholder: const AssetImage(
+                                                      'assets/images/profile.png'),
+                                                  fit: BoxFit.cover,
+                                                  width: 80.0,
+                                                  height: 80.0,
+                                                ),
+                                              )
+                                            : SizedBox(
+                                                width: 80,
+                                                height: 80,
+                                                child: Image.asset(
+                                                    'assets/images/profile.png'),
+                                              ),
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            name,
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 255, 255, 255),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          // Text(
+                                          //   "hyundai creta",
+                                          //   style: TextStyle(
+                                          //       color: Color.fromARGB(
+                                          //           181, 255, 255, 255)),
+                                          // ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Icon(Icons.navigate_next),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => UserPosts(
-                                          uid: getuid(),
-                                          name: name,
-                                          user_img: img_url,
-                                        )));
-                          },
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * .1,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                border: Border(
-                                    bottom: BorderSide(color: Colors.black12))),
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text("switch region"),
-                                ),
-                                Icon(Icons.switch_access_shortcut),
-                              ],
-                            ),
-                          ),
-                        ),
-                        // GestureDetector(
-                        //   onTap: () {
-                        //     Navigator.push(
-                        //         context,
-                        //         MaterialPageRoute(
-                        //             builder: (context) => places2()));
-                        //   },
-                        //   child: Container(
-                        //     height: MediaQuery.of(context).size.height * .1,
-                        //     width: MediaQuery.of(context).size.width,
-                        //     decoration: BoxDecoration(
-                        //         color: const Color.fromARGB(255, 255, 255, 255),
-                        //         border: Border(
-                        //             bottom: BorderSide(color: Colors.black12))),
-                        //     child: Row(
-                        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //       children: [
-                        //         Padding(
-                        //           padding: const EdgeInsets.all(8.0),
-                        //           child: Text("places trvelled"),
-                        //         ),
-                        //         Icon(Icons.navigate_next),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        const Gap(80),
-                        ElevatedButton(
-                            onPressed: () {
-                              logoutpopup();
-                            },
-                            child: const Text('Logout'))
+                        )
                       ],
                     ),
-                  ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height * .20,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade500,
+                                  blurRadius: 2,
+                                  offset: Offset(2, 0))
+                            ],
+                            color: Colors.white),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => UserPosts(
+                                                uid: getuid(),
+                                                name: name,
+                                                user_img: img_url,
+                                              )));
+                                },
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * .1,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: const BoxDecoration(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.black12))),
+                                  child: const Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Text("posts"),
+                                      ),
+                                      Icon(Icons.navigate_next),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Blogs(uid: getuid())));
+                                },
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * .1,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          255, 255, 255, 255),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.black12))),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text("blogs"),
+                                      ),
+                                      Icon(Icons.navigate_next),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CurrentTaxiBooking()));
+                                },
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * .1,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: const BoxDecoration(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.black12))),
+                                  child: const Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Text("Current Taxi Booking"),
+                                      ),
+                                      Icon(Icons.navigate_next),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => EditProfile(
+                                                userDoc: userdoc,
+                                              )));
+                                },
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * .1,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: const BoxDecoration(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.black12))),
+                                  child: const Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Text("Edit Profile"),
+                                      ),
+                                      Icon(Icons.navigate_next),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     Navigator.push(
+                              //         context,
+                              //         MaterialPageRoute(
+                              //             builder: (context) => places2()));
+                              //   },
+                              //   child: Container(
+                              //     height: MediaQuery.of(context).size.height * .1,
+                              //     width: MediaQuery.of(context).size.width,
+                              //     decoration: BoxDecoration(
+                              //         color: const Color.fromARGB(255, 255, 255, 255),
+                              //         border: Border(
+                              //             bottom: BorderSide(color: Colors.black12))),
+                              //     child: Row(
+                              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //       children: [
+                              //         Padding(
+                              //           padding: const EdgeInsets.all(8.0),
+                              //           child: Text("places trvelled"),
+                              //         ),
+                              //         Icon(Icons.navigate_next),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // ),
+                              const Gap(80),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    logoutpopup();
+                                  },
+                                  child: const Text('Logout'))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
-        ),
-      )),
-    );
+            )),
+          );
   }
 
   logoutpopup() => showDialog(

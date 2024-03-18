@@ -6,8 +6,10 @@ import 'package:wander_in/parent_pages/notification.dart';
 import 'package:wander_in/parent_pages/plans.dart';
 
 class ParentPage extends StatefulWidget {
+  // final String user_type;
   const ParentPage({
     super.key,
+    // required this.user_type,
   });
 
   @override
