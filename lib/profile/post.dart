@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:wander_in/message/message.dart';
 import 'package:wander_in/plans/add_to_plans.dart';
 import 'package:wander_in/profile/new_post.dart';
 import 'package:wander_in/user_id.dart';
@@ -108,6 +110,16 @@ class _UserPostsState extends State<UserPosts> {
                                     ),
                                   ],
                                 ),
+                              ),
+                              Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  deletepostpopup(document_id);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: Icon(Icons.delete),
+                                ),
                               )
                             ],
                           ),
@@ -117,7 +129,7 @@ class _UserPostsState extends State<UserPosts> {
                           height: MediaQuery.of(context).size.height * .35,
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage("assets/images/r.png"),
+                                  image: NetworkImage(docData['img_url']),
                                   fit: BoxFit.cover)),
                           child: Stack(
                             alignment: Alignment.bottomLeft,
@@ -229,4 +241,79 @@ class _UserPostsState extends State<UserPosts> {
       ),
     );
   }
+
+  deletepost(String feedId) {
+    FirebaseFirestore.instance
+        .collection('feed')
+        .doc(feedId)
+        .delete()
+        .then((value) {
+      newCustomMessage(context, 'post deleted');
+    });
+  }
+
+  deletepostpopup(String feedId) => showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Center(
+            child: Text(
+              'delete post',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 25),
+            ),
+          ),
+          content: const Row(
+            children: [
+              Spacer(),
+              Text(
+                '            Are you sure?            ',
+                style: TextStyle(color: Colors.black),
+              ),
+              Spacer()
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                deletepost(feedId);
+                Navigator.pop(context);
+              },
+              child: Container(
+                color: Colors.red,
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'yes',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                color: Colors.green,
+                child: const Padding(
+                  padding:
+                      EdgeInsets.only(bottom: 8, top: 8, left: 10, right: 10),
+                  child: Text(
+                    'No',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            )
+          ],
+          backgroundColor: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+        barrierDismissible: true,
+      );
 }

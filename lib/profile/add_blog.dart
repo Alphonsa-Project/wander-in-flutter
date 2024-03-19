@@ -82,6 +82,21 @@ class _AddBlogState extends State<AddBlog> {
       'order': DateTime.now(),
       'text': blogCtrl.text
     }).then((value) {
+      final user = FirebaseFirestore.instance.collection('users').doc(getuid());
+
+      user.get().then((DocumentSnapshot userDoc) {
+        if (userDoc.exists) {
+          var userdoc = userDoc.data() as Map<String, dynamic>;
+          if (userdoc.containsKey('rank_points')) {
+            user.set({
+              'rank_points':
+                  (double.parse(userDoc['rank_points']) + 1).toString()
+            }, SetOptions(merge: true));
+          } else {
+            user.set({'rank_points': '1'}, SetOptions(merge: true));
+          }
+        }
+      });
       if (mounted) {
         setState(() {
           loading = false;

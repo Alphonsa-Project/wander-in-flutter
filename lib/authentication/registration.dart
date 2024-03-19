@@ -130,6 +130,7 @@ class _RegistrationState extends State<Registration> {
         'mobile': getmobile(),
         'vehicle_number': vehicle_number.text,
         'vehicle_type': _selectedVehicleType,
+        'vehicle_type_search_key': _selectedVehicleType.toUpperCase(),
         'driver_experience': driver_experiense.text,
         'address': addressCtrl.text,
         'charge': charge.text,
@@ -151,8 +152,8 @@ class _RegistrationState extends State<Registration> {
             loading = false;
           });
         }
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ParentPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const TaxiHomePage()));
       });
     } else {
       newCustomMessage(context, 'All fields and Images are compulsory');

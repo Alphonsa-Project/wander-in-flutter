@@ -203,32 +203,73 @@ class _HomePageState extends State<HomePage> {
                                     padding: const EdgeInsets.only(
                                         left: 8.0, top: 9.0),
                                     child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => ViewPlace(
-                                                      place: places,
-                                                      userDoc: userdoc,
-                                                      place_id: place_id,
-                                                    )));
-                                      },
-                                      child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                5,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                .3,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            image: DecorationImage(
-                                                image: NetworkImage(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ViewPlace(
+                                                        place: places,
+                                                        userDoc: userdoc,
+                                                        place_id: place_id,
+                                                      )));
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: SizedBox(
+                                            // height: 100,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                .2,
+
+                                            // width: 90,
+                                            child: Stack(
+                                              alignment: Alignment.bottomCenter,
+                                              // shrinkWrap: true,
+                                              children: [
+                                                Image.network(
                                                     places['img_url']),
-                                                fit: BoxFit.cover)),
-                                      ),
-                                    ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 4.0),
+                                                  child: Container(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 15,
+                                                              vertical: 6),
+                                                      color: Colors.white60,
+                                                      child: Text(
+                                                        places['place_name'],
+                                                        style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      )),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                        // Container(
+                                        //   height:
+                                        //       MediaQuery.of(context).size.height *
+                                        //           5,
+                                        //   width:
+                                        //       MediaQuery.of(context).size.width *
+                                        //           .3,
+                                        //   decoration: BoxDecoration(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(12),
+                                        //       image: DecorationImage(
+                                        //           image: NetworkImage(
+                                        //               places['img_url']),
+                                        //           fit: BoxFit.cover)),
+                                        // ),
+                                        ),
                                   );
                                 },
                               );

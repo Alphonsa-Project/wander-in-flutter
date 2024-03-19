@@ -30,6 +30,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   String name = '';
   String img_url = '';
+  String rank_points = '0';
   Map<String, dynamic> userdoc = {};
   bool loading = true;
 
@@ -44,6 +45,12 @@ class _ProfileState extends State<Profile> {
         name = userDoc['name'];
         img_url = userDoc['image_url'];
         userdoc = userDoc.data() as Map<String, dynamic>;
+        if (userdoc.containsKey('rank_points')) {
+          rank_points = userdoc['rank_points'];
+          if (mounted) {
+            setState(() {});
+          }
+        }
         setState(() {
           loading = false;
         });
@@ -119,6 +126,13 @@ class _ProfileState extends State<Profile> {
                                         children: [
                                           Text(
                                             name,
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 255, 255, 255),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            'Rank Points: ' + rank_points,
                                             style: TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 255, 255, 255),

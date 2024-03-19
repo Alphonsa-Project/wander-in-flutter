@@ -5,6 +5,7 @@ import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:wander_in/places/add_place_to_plans.dart';
+import 'package:wander_in/resorts/view_resorts.dart';
 
 class ViewPlace extends StatefulWidget {
   final Map<String, dynamic> place;
@@ -111,16 +112,16 @@ class _ViewPlaceState extends State<ViewPlace> {
                           ],
                         ),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 0.38,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/r1.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   width: MediaQuery.of(context).size.width,
+                      //   height: MediaQuery.of(context).size.height * 0.38,
+                      //   decoration: BoxDecoration(
+                      //     image: DecorationImage(
+                      //       image: AssetImage("assets/images/r1.png"),
+                      //       fit: BoxFit.cover,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -288,6 +289,14 @@ class _ViewPlaceState extends State<ViewPlace> {
                                           left: 8.0, top: 9.0),
                                       child: GestureDetector(
                                         onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ViewResort(
+                                                      resortDoc: places,
+                                                    )),
+                                          );
                                           // Navigator.push(
                                           //     context,
                                           //     MaterialPageRoute(
@@ -307,7 +316,7 @@ class _ViewPlaceState extends State<ViewPlace> {
                                                   BorderRadius.circular(12),
                                               image: DecorationImage(
                                                   image: NetworkImage(
-                                                      places['img_url']),
+                                                      places['imageUrl']),
                                                   fit: BoxFit.cover)),
                                         ),
                                       ),
@@ -347,6 +356,7 @@ class _ViewPlaceState extends State<ViewPlace> {
                                     }
 
                                     final places = snapshot.docs[index].data();
+                                    final placeId = snapshot.docs[index].id;
                                     log(places.toString());
 
                                     return Padding(
@@ -354,13 +364,15 @@ class _ViewPlaceState extends State<ViewPlace> {
                                           left: 8.0, top: 9.0),
                                       child: GestureDetector(
                                         onTap: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             ViewPlace(
-                                          //               place: places,userDoc: ,
-                                          //             )));
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ViewPlace(
+                                                        place: places,
+                                                        userDoc: widget.userDoc,
+                                                        place_id: placeId,
+                                                      )));
                                         },
                                         child: Container(
                                           height: 100,

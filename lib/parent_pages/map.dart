@@ -3,13 +3,16 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:gap/gap.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:wander_in/hotels/view_hotel.dart';
 import 'package:wander_in/loading/loading.dart';
 import 'package:wander_in/message/message.dart';
+import 'package:wander_in/places/view_place.dart';
 import 'package:wander_in/resort2.dart';
 import 'package:wander_in/resorts/view_resorts.dart';
 import 'package:wander_in/resortview.dart';
+import 'package:wander_in/search/hotel_search_page.dart';
 import 'package:wander_in/taxi/book_taxi.dart';
 import 'package:wander_in/user_id.dart';
 
@@ -23,11 +26,14 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   String region = 'region';
   String name = '';
+  Map<String, dynamic> userdoc = {};
   List<Marker> markers = [];
   bool loading = true;
   Color hotelColor = Colors.black;
   Color resortColor = Colors.white;
   Color taxiColor = Colors.white;
+  Color placeColor = Colors.white;
+  Color placetext = Colors.black;
   Color hoteltext = Colors.white;
   Color resorttext = Colors.black;
   Color taxitext = Colors.black;
@@ -61,6 +67,7 @@ class _MapPageState extends State<MapPage> {
       if (userDoc.exists) {
         region = userDoc['region'];
         name = userDoc['name'];
+        userdoc = userDoc.data() as Map<String, dynamic>;
         setState(() {
           loading = false;
         });
@@ -193,6 +200,61 @@ class _MapPageState extends State<MapPage> {
     });
   }
 
+  getPlaceMarkers() async {
+    var placesList = await FirebaseFirestore.instance
+        .collection('places')
+        // .where('region', isEqualTo: region)
+        .get();
+    markers = placesList.docs
+        .map(
+          (doc) => Marker(
+            point: LatLng(double.parse(doc.data()['lat'].toString()),
+                double.parse(doc.data()['long'].toString())),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ViewPlace(
+                                place: doc.data(),
+                                userDoc: userdoc,
+                                place_id: doc.id,
+                              )));
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //       builder: (context) => BookTaxi(
+                  //             user_name: name,
+                  //             taxiData: doc.data(),
+                  //           )),
+                  // );
+                  // if (doc.data()['status'] == true) {
+                  //   // Navigator.push(
+                  //   //   context,
+                  //   //   MaterialPageRoute(
+                  //   //       builder: (context) => SlotPage(
+                  //   //             docid: doc.id,
+                  //   //             station_doc: doc.data(),
+                  //   //           )),
+                  //   // );
+                  // } else {
+                  //   newCustomMessage(context, 'currently not available');
+                  // }
+                },
+                child: const Icon(
+                  Icons.nature,
+                  color: Colors.green,
+                  size: 50,
+                )),
+          ),
+        )
+        .toList();
+
+    setState(() {
+      loading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return loading
@@ -221,7 +283,8 @@ class _MapPageState extends State<MapPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   // Padding(
-                                  //   padding: const EdgeInsets.only(left: 10.0),
+                                  //   padding:
+                                  //       const EdgeInsets.only(left: 10.0),
                                   //   child: Row(
                                   //     children: [
                                   //       Padding(
@@ -266,6 +329,96 @@ class _MapPageState extends State<MapPage> {
                                   //     ],
                                   //   ),
                                   // ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  HotelSearchPageResult(
+                                                    userdoc: userdoc,
+                                                  )));
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20, vertical: 6),
+                                        decoration: BoxDecoration(
+                                            color: const Color.fromARGB(
+                                                255, 255, 255, 255),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(10)),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                spreadRadius: .7,
+                                                offset: const Offset(.5, 1),
+                                                blurRadius: 5,
+                                                color: const Color(0x0fd3d3d3)
+                                                    .withOpacity(.8),
+                                              ),
+                                            ]),
+                                        child: Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.search,
+                                              color: Color.fromARGB(
+                                                  255, 0, 67, 144),
+                                            ),
+                                            const Gap(10),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  .7,
+                                              height: 30,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  // color: const Color.fromARGB(255, 230, 234, 248),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                ),
+                                                child: const Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text('search'),
+                                                      ],
+                                                    )
+                                                    //  TextFormField(
+                                                    //   onChanged: (val) {
+                                                    //     setState(() {
+                                                    //       name = val.toUpperCase();
+                                                    //     });
+                                                    //   },
+                                                    //   style: const TextStyle(
+                                                    //     fontSize: 16,
+                                                    //     color: Colors.black,
+                                                    //     height: .8,
+                                                    //   ),
+                                                    //   decoration: const InputDecoration(
+                                                    //     isDense: true,
+                                                    //     border: InputBorder.none,
+                                                    //     hintText: 'Search',
+                                                    //   ),
+                                                    // ),
+                                                    ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                   SizedBox(
                                     height: 10,
                                   ),
@@ -283,10 +436,12 @@ class _MapPageState extends State<MapPage> {
                                               hotelColor = selectedbgColor;
                                               hoteltext = selectedtextColor;
 
-                                              taxiColor = resortColor =
-                                                  unselectedbgColor;
-                                              taxitext = resorttext =
-                                                  unselectedtextColor;
+                                              placeColor = taxiColor =
+                                                  resortColor =
+                                                      unselectedbgColor;
+                                              placetext = taxitext =
+                                                  resorttext =
+                                                      unselectedtextColor;
                                             });
                                           },
                                           child: Container(
@@ -302,9 +457,47 @@ class _MapPageState extends State<MapPage> {
                                                 .2,
                                             child: Center(
                                               child: Text(
-                                                'hotel',
+                                                'Hotel',
                                                 style: TextStyle(
                                                     color: hoteltext,
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              getPlaceMarkers();
+                                              placeColor = selectedbgColor;
+                                              placetext = selectedtextColor;
+
+                                              taxiColor = hotelColor =
+                                                  resortColor =
+                                                      unselectedbgColor;
+                                              taxitext = hoteltext =
+                                                  resorttext =
+                                                      unselectedtextColor;
+                                            });
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: placeColor,
+                                            ),
+                                            height: 40,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .2,
+                                            child: Center(
+                                              child: Text(
+                                                'Place',
+                                                style: TextStyle(
+                                                    color: placetext,
                                                     fontSize: 16,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -319,10 +512,12 @@ class _MapPageState extends State<MapPage> {
                                               taxiColor = selectedbgColor;
                                               taxitext = selectedtextColor;
 
-                                              hotelColor = resortColor =
-                                                  unselectedbgColor;
-                                              hoteltext = resorttext =
-                                                  unselectedtextColor;
+                                              placeColor = hotelColor =
+                                                  resortColor =
+                                                      unselectedbgColor;
+                                              placetext = hoteltext =
+                                                  resorttext =
+                                                      unselectedtextColor;
                                             });
                                           },
                                           child: Container(
@@ -338,7 +533,7 @@ class _MapPageState extends State<MapPage> {
                                                 .2,
                                             child: Center(
                                               child: Text(
-                                                'taxi',
+                                                'Taxi',
                                                 style: TextStyle(
                                                     color: taxitext,
                                                     fontSize: 16,
@@ -355,9 +550,10 @@ class _MapPageState extends State<MapPage> {
                                               resortColor = selectedbgColor;
                                               resorttext = selectedtextColor;
 
-                                              taxiColor = hotelColor =
-                                                  unselectedbgColor;
-                                              taxitext = hoteltext =
+                                              placeColor = taxiColor =
+                                                  hotelColor = placetext =
+                                                      unselectedbgColor;
+                                              placetext = taxitext = hoteltext =
                                                   unselectedtextColor;
                                             });
                                           },
@@ -374,7 +570,7 @@ class _MapPageState extends State<MapPage> {
                                                 .2,
                                             child: Center(
                                               child: Text(
-                                                'resort',
+                                                'Resort',
                                                 style: TextStyle(
                                                     color: resorttext,
                                                     fontSize: 16,
