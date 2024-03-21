@@ -11,6 +11,7 @@ import 'package:wander_in/profile/blogs.dart';
 import 'package:wander_in/places2.dart';
 import 'package:wander_in/posts.dart';
 import 'package:wander_in/posts1.dart';
+import 'package:wander_in/profile/current_resort_booking.dart';
 import 'package:wander_in/profile/current_taxi_booking.dart';
 import 'package:wander_in/profile/edit_profile.dart';
 import 'package:wander_in/profile/post.dart';
@@ -261,6 +262,36 @@ class _ProfileState extends State<Profile> {
                                       Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text("Current Taxi Booking"),
+                                      ),
+                                      Icon(Icons.navigate_next),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CurrentResortBookings()));
+                                },
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * .1,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: const BoxDecoration(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.black12))),
+                                  child: const Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Text("Current Resort Bookings"),
                                       ),
                                       Icon(Icons.navigate_next),
                                     ],

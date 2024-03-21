@@ -30,6 +30,8 @@ class TravellerProfile extends StatefulWidget {
 class _TravellerProfileState extends State<TravellerProfile> {
   String name = '';
   String img_url = '';
+  String rank_points = '0';
+  Map<String, dynamic> userdoc = {};
 
   @override
   void initState() {
@@ -41,6 +43,13 @@ class _TravellerProfileState extends State<TravellerProfile> {
       if (userDoc.exists) {
         name = userDoc['name'];
         img_url = userDoc['image_url'];
+        userdoc = userDoc.data() as Map<String, dynamic>;
+        if (userdoc.containsKey('rank_points')) {
+          rank_points = userdoc['rank_points'];
+          if (mounted) {
+            setState(() {});
+          }
+        }
         setState(() {});
       }
     });
@@ -112,6 +121,13 @@ class _TravellerProfileState extends State<TravellerProfile> {
                                   children: [
                                     Text(
                                       name,
+                                      style: TextStyle(
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      'Rank Points: ' + rank_points,
                                       style: TextStyle(
                                           color: Color.fromARGB(
                                               255, 255, 255, 255),

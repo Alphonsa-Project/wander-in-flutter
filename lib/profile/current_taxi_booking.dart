@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -16,28 +18,60 @@ class CurrentTaxiBooking extends StatefulWidget {
 
 class _CurrentTaxiBookingState extends State<CurrentTaxiBooking> {
   Map<String, dynamic> taxiBookingData = {};
+  String bookingDocId = 'id';
   bool loading = true;
   bool haveData = false;
-  @override
-  void initState() {
-    FirebaseFirestore.instance
-        .collection('taxi_booking')
-        .doc(getuid())
-        .get()
-        .then((DocumentSnapshot userDoc) {
-      if (userDoc.exists) {
-        taxiBookingData = userDoc.data() as Map<String, dynamic>;
+  var fire;
+
+  getFirstDoc() {
+    if (fire != null) {
+      if (fire.docs.length > 0) {
+        log('data--hey');
+
+        //taxiBookingData =
+        log(fire.docs.first.data().toString());
+        taxiBookingData = fire.docs.first.data();
+        bookingDocId = fire.docs.first.id;
+        log(bookingDocId);
+
         setState(() {
+          log('data--hey');
           loading = false;
           haveData = true;
         });
       } else {
+        log('no data--hey');
+
         setState(() {
           haveData = false;
           loading = false;
         });
       }
-    });
+    } else {
+      log('fire is null');
+      log('no data--hey');
+
+      setState(() {
+        haveData = false;
+        loading = false;
+      });
+    }
+  }
+
+  getBookingData() async {
+    fire = await FirebaseFirestore.instance
+        .collection('taxi_booking')
+        .where('user_uid', isEqualTo: getuid())
+        .orderBy('booking_time', descending: true)
+        .get();
+
+    getFirstDoc();
+  }
+
+  @override
+  void initState() {
+    getBookingData();
+
     // TODO: implement initState
     super.initState();
   }
@@ -73,8 +107,7 @@ class _CurrentTaxiBookingState extends State<CurrentTaxiBooking> {
                         Gap(10),
                         Text('Charge : ${taxiBookingData['charge']}/km '),
                         Gap(10),
-                        Text(
-                            'Driver name: ${taxiBookingData['name_of_driver']}'),
+                        Text('Driver name: ${taxiBookingData['name']}'),
                         Gap(10),
                         Text(
                             'Driver Experience: ${taxiBookingData['driver_experience']}'),
@@ -82,7 +115,7 @@ class _CurrentTaxiBookingState extends State<CurrentTaxiBooking> {
                         Text(
                             'Vehicle number: ${taxiBookingData['vehicle_number']}'),
                         Gap(10),
-                        Text('Phone number: ${taxiBookingData['phone']}'),
+                        Text('Phone number: ${taxiBookingData['mobile']}'),
                         Gap(40),
                         ElevatedButton(
                             onPressed: () {
@@ -100,7 +133,7 @@ class _CurrentTaxiBookingState extends State<CurrentTaxiBooking> {
   cancelTaxi() {
     FirebaseFirestore.instance
         .collection('taxi_booking')
-        .doc(getuid())
+        .doc(bookingDocId)
         .delete()
         .then((value) {
       Navigator.pop(context);

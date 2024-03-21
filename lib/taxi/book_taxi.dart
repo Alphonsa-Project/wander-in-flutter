@@ -94,58 +94,11 @@ class _BookTaxiState extends State<BookTaxi> {
                                             color: Color.fromARGB(
                                                 181, 255, 255, 255)),
                                       ),
-                                      // Text(
-                                      //   widget.taxiData['vehicle_number'],
-                                      //   style: TextStyle(
-                                      //       color:
-                                      //           Color.fromARGB(181, 255, 255, 255)),
-                                      // ),
                                     ],
                                   ),
                                 ],
                               ),
                             ),
-                            // Positioned(
-                            //   top: 80,
-                            //   right: 100,
-                            //   child: Column(
-                            //     children: [
-                            //       Row(
-                            //         children: [
-                            //           Icon(
-                            //             Icons.star,
-                            //             color: Colors.amber,
-                            //             size: 18,
-                            //           ),
-                            //           Icon(
-                            //             Icons.star,
-                            //             color: Colors.amber,
-                            //             size: 18,
-                            //           ),
-                            //           Icon(
-                            //             Icons.star,
-                            //             color: Colors.amber,
-                            //             size: 18,
-                            //           ),
-                            //           Icon(
-                            //             Icons.star,
-                            //             color: Colors.amber,
-                            //             size: 18,
-                            //           ),
-                            //           Icon(
-                            //             Icons.star,
-                            //             color: Colors.white.withOpacity(.9),
-                            //             size: 18,
-                            //           ),
-                            //         ],
-                            //       ),
-                            //       Text(
-                            //         "4.0",
-                            //         style: TextStyle(color: Colors.white),
-                            //       )
-                            //     ],
-                            //   ),
-                            // )
                           ],
                         ),
                       )
@@ -164,27 +117,6 @@ class _BookTaxiState extends State<BookTaxi> {
                       ], color: Colors.white),
                       child: Column(
                         children: [
-                          // Container(
-                          //   height: MediaQuery.of(context).size.height * .05,
-                          //   width: MediaQuery.of(context).size.width,
-                          //   decoration: BoxDecoration(
-                          //       color: const Color.fromARGB(255, 255, 255, 255),
-                          //       borderRadius: BorderRadius.only(
-                          //           topLeft: Radius.circular(20),
-                          //           topRight: Radius.circular(20)),
-                          //       border: Border(
-                          //           bottom: BorderSide(color: Colors.black12))),
-                          //   child: Padding(
-                          //     padding: const EdgeInsets.all(10.0),
-                          //     child: Center(
-                          //         child: Text(
-                          //       "taxi account",
-                          //       style: TextStyle(fontSize: 18),
-                          //     )),
-                          //   ),
-                          // ),
-                          // Container(
-                          // child:
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: ListView(shrinkWrap: true, children: [
@@ -214,110 +146,6 @@ class _BookTaxiState extends State<BookTaxi> {
                                   child: const Text('Book Taxi'))
                             ]),
                           ),
-                          // ),
-                          // Container(
-                          //   height: MediaQuery.of(context).size.height * .1,
-                          //   width: MediaQuery.of(context).size.width,
-                          //   decoration: BoxDecoration(
-                          //       color: const Color.fromARGB(255, 255, 255, 255),
-                          //       border: Border(
-                          //           bottom: BorderSide(color: Colors.black12))),
-                          //   child: Padding(
-                          //     padding: const EdgeInsets.all(10.0),
-                          //     child: Row(
-                          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          //       children: [
-                          //         Icon(
-                          //           Icons.local_taxi,
-                          //           color: Colors.red,
-                          //           size: 30,
-                          //         ),
-                          //         Center(
-                          //           child: SingleChildScrollView(
-                          //             scrollDirection: Axis.vertical,
-                          //             child: Column(
-                          //               mainAxisAlignment: MainAxisAlignment.center,
-                          //               children: [
-                          //                 Padding(
-                          //                   padding: const EdgeInsets.only(
-                          //                       top: 25.0, right: 5, left: 5),
-                          //                   child: Container(
-                          //                     height:
-                          //                         MediaQuery.of(context).size.height *
-                          //                             .005,
-                          //                     width:
-                          //                         MediaQuery.of(context).size.width *
-                          //                             .5,
-                          //                     decoration: BoxDecoration(
-                          //                         color: Colors.amber,
-                          //                         borderRadius:
-                          //                             BorderRadius.circular(20)),
-                          //                   ),
-                          //                 ),
-                          //                 Padding(
-                          //                   padding: const EdgeInsets.all(8.0),
-                          //                   child: Text(
-                          //                     "distance",
-                          //                     style: TextStyle(
-                          //                         color: const Color.fromARGB(
-                          //                             255, 0, 0, 0)),
-                          //                   ),
-                          //                 )
-                          //               ],
-                          //             ),
-                          //           ),
-                          //         ),
-                          //         Icon(
-                          //           Icons.location_pin,
-                          //           color: Colors.red,
-                          //           size: 30,
-                          //         ),
-                          //       ],
-                          //     ),
-                          //   ),
-                          // ),
-                          // Container(
-                          //   width: MediaQuery.of(context).size.width,
-                          //   height: MediaQuery.of(context).size.height * .50,
-                          // ),
-                          // Container(
-                          //   height: MediaQuery.of(context).size.height * .1,
-                          //   width: MediaQuery.of(context).size.width,
-                          //   decoration: BoxDecoration(
-                          //       color: const Color.fromARGB(255, 255, 255, 255),
-                          //       border:
-                          //           Border(top: BorderSide(color: Colors.black12))),
-                          //   child: Center(
-                          //     child: Padding(
-                          //       padding: const EdgeInsets.all(8.0),
-                          //       child: Column(
-                          //         children: [
-                          //           Text(
-                          //             "book the taxi",
-                          //             style: TextStyle(
-                          //                 color: const Color.fromARGB(255, 0, 0, 0)),
-                          //           ),
-                          //           Padding(
-                          //             padding: const EdgeInsets.all(8.0),
-                          //             child: Container(
-                          //               height: 20,
-                          //               width: 100,
-                          //               decoration: BoxDecoration(
-                          //                 color: Colors.black,
-                          //                 borderRadius: BorderRadius.circular(20),
-                          //               ),
-                          //               child: Center(
-                          //                   child: Text(
-                          //                 "book",
-                          //                 style: TextStyle(color: Colors.white),
-                          //               )),
-                          //             ),
-                          //           )
-                          //         ],
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
