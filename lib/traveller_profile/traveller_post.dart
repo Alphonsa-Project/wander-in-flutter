@@ -106,7 +106,7 @@ class _TravellerPostsState extends State<TravellerPosts> {
                           height: MediaQuery.of(context).size.height * .35,
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage("assets/images/r.png"),
+                                  image: NetworkImage(docData['img_url']),
                                   fit: BoxFit.cover)),
                           child: Stack(
                             alignment: Alignment.bottomLeft,
